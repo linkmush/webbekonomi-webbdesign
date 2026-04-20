@@ -1,4 +1,4 @@
-# Codex Instructions – Webbekonomi & Webbdesign AB
+# Codex Instructions – Webbekonomi & Webbdesign AB instruktioner
 
 Du ska skapa ett nytt modernt, responsivt webbprojekt för företaget **Webbekonomi & Webbdesign AB**.
 
