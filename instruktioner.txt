@@ -1,0 +1,381 @@
+# Codex Instructions – Webbekonomi & Webbdesign AB
+
+Du ska skapa ett nytt modernt, responsivt webbprojekt för företaget **Webbekonomi & Webbdesign AB**.
+
+## Övergripande mål
+Bygg en stilren, modern och professionell hemsida för ett företag som arbetar med:
+- ekonomi
+- webbutveckling
+- webbdesign
+
+Designen ska därför kännas:
+- modern
+- förtroendeingivande
+- teknisk
+- affärsmässig
+- ren och exklusiv utan att bli för stel
+
+Sidan ska fungera bra för både företagets ekonomitjänster och deras utvecklings-/designtjänster.
+
+---
+
+## Teknisk bas
+Projektet ska byggas med:
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Lenis för mjuk scroll
+- responsiv design från början
+- modern komponentstruktur
+
+## Installation
+Du ska:
+1. skapa projektet från grunden
+2. installera alla nödvändiga paket
+3. använda **senaste stabila versionerna** av paketen vid installationstillfället
+4. konfigurera projektet så att det fungerar direkt efter installation
+5. skapa en ren, professionell och skalbar struktur
+
+**Viktigt:**  
+Om vissa absolut senaste versioner inte fungerar tillsammans, välj då den **senaste kompatibla stabila versionen** och fortsätt utan att fastna.
+
+---
+
+## Paket / bibliotek
+Utgå från att följande typer av paket ska installeras där de behövs, men använd **senaste stabila versionerna**, inte exakt de versionsnummer som står i gamla exempel:
+
+### Dependencies
+- @emailjs/browser
+- @hookform/resolvers
+- @radix-ui/react-accordion
+- @radix-ui/react-alert-dialog
+- @radix-ui/react-aspect-ratio
+- @radix-ui/react-avatar
+- @radix-ui/react-checkbox
+- @radix-ui/react-collapsible
+- @radix-ui/react-context-menu
+- @radix-ui/react-dialog
+- @radix-ui/react-dropdown-menu
+- @radix-ui/react-hover-card
+- @radix-ui/react-label
+- @radix-ui/react-menubar
+- @radix-ui/react-navigation-menu
+- @radix-ui/react-popover
+- @radix-ui/react-progress
+- @radix-ui/react-radio-group
+- @radix-ui/react-scroll-area
+- @radix-ui/react-select
+- @radix-ui/react-separator
+- @radix-ui/react-slot
+- @radix-ui/react-tooltip
+- @tailwindcss/vite
+- class-variance-authority
+- clsx
+- cmdk
+- date-fns
+- embla-carousel-react
+- framer-motion
+- i18next
+- input-otp
+- lenis
+- lucide-react
+- react
+- react-day-picker
+- react-dom
+- react-helmet
+- react-hook-form
+- react-i18next
+- react-resizable-panels
+- react-router-dom
+- recharts
+- tailwind-merge
+- vaul
+- zod
+
+### Dev dependencies
+- @eslint/js
+- @types/node
+- @types/react
+- @types/react-dom
+- @types/react-helmet
+- @vitejs/plugin-react
+- autoprefixer
+- baseline-browser-mapping
+- eslint
+- eslint-plugin-react-hooks
+- eslint-plugin-react-refresh
+- globals
+- postcss
+- tailwindcss
+- tw-animate-css
+- typescript
+- typescript-eslint
+- vite
+
+---
+
+## Projektstruktur
+Skapa en tydlig struktur, exempelvis:
+
+- src/
+  - components/
+  - components/ui/
+  - layout/
+  - pages/
+  - sections/
+  - hooks/
+  - lib/
+  - routes/
+  - assets/
+  - styles/
+  - i18n/
+- public/
+
+Kodstrukturen ska vara lätt att vidareutveckla.
+
+---
+
+## Designsystem / Tema
+Detta är mycket viktigt:
+
+Skapa ett centralt färgsystem i CSS så att hela sajtens färgtema enkelt kan ändras från ett ställe.
+
+### Krav:
+- använd CSS-variabler för färger
+- skapa både **light theme** och **dark theme**
+- skapa en **toggle-knapp** för att växla tema
+- temat ska återanvändas över hela sajten
+- komponenter ska använda design tokens/variabler i stället för hårdkodade färger där det är rimligt
+
+### Exempel på tänk:
+- bakgrund
+- foreground/text
+- primary
+- secondary
+- accent
+- border
+- muted
+- card
+- success / warning om det behövs
+
+Det ska vara enkelt för mig att senare gå in och ändra hela färgtemat centralt.
+
+---
+
+## Designriktning
+Sajten ska ha:
+- modern design
+- ren layout
+- mjuka spacing-lösningar
+- tydlig typografi
+- subtila animationer
+- affärsmässig känsla
+- god läsbarhet
+- bra kontrast
+- tydliga call-to-actions
+- premiumkänsla men inte överdesignad
+
+Stilen ska passa ett företag som kombinerar:
+- ekonomisk trygghet
+- affärsfokus
+- teknisk kompetens
+- digital utveckling
+
+### Visuell känsla
+Tänk ungefär:
+- modern byrå
+- tech + business
+- trovärdig
+- clean
+- mörkt/ljust tema som båda ser professionella ut
+
+---
+
+## Scroll och interaktion
+Implementera **Lenis** för mjuk scroll.
+
+Krav:
+- scrollen ska kännas mjuk och modern
+- implementationen ska vara korrekt integrerad i appen
+- inga konstiga hack eller onödigt komplex setup
+- sidan ska fortfarande vara responsiv och tillgänglig
+
+---
+
+## Routing och sidor
+Bygg en basic hemsida med **fyra undersidor**:
+
+1. **Landing page / Hem**
+2. **Om oss**
+3. **Tjänster**
+4. **Kontakt**
+
+Använd React Router.
+
+Skapa även:
+- navbar
+- footer
+- aktiv länkmarkering
+- mobilanpassad navigation / hamburger-lösning om det behövs
+
+---
+
+## Innehåll per sida
+
+### 1. Landing page / Hem
+Ska innehålla:
+
+#### Hero section
+- stark headline
+- undertitel
+- call-to-action-knappar
+- modern layout
+- gärna lätt animation eller visuella accenter
+
+#### Mellansektion
+- en introduktion/hint om Webbekonomi & Webbdesign AB
+- tydligt beskriva att företaget arbetar med både ekonomi och webblösningar
+- ska ge en snabb känsla för företagets identitet
+
+#### Kontakt / karta-sektion
+- kontaktuppgifter
+- e-post
+- telefonnummer
+- plats för karta eller kartsektion
+- tydlig kontaktväg
+
+---
+
+### 2. Om oss
+Ska innehålla:
+- information om företaget
+- företagets fokus
+- varför kunder ska välja dem
+- professionell men enkel layout
+- gärna sektioner för vision, arbetssätt eller värdeord
+
+---
+
+### 3. Tjänster
+Ska innehålla:
+- vilka tjänster företaget erbjuder
+- sektioner eller cards för olika tjänster
+- exempelvis ekonomi, webbutveckling, webbdesign, digital rådgivning
+- tydlig struktur och bra läsbarhet
+
+---
+
+### 4. Kontakt
+Ska innehålla:
+- kontaktformulär
+- kontaktinformation
+- karta eller kartsektion
+- e-post
+- telefonnummer
+- tydlig CTA att ta kontakt
+
+Formuläret behöver inte kopplas helt färdigt till riktig backend, men det ska vara snyggt uppbyggt och kännas professionellt.
+
+---
+
+## Responsivitet
+Detta är ett krav.
+
+Sajten ska fungera bra på:
+- mobil
+- tablet
+- desktop
+
+Tänk på:
+- spacing
+- typografi
+- grid/flex-layout
+- navigering
+- knappar
+- formulär
+- hero-section
+- cards och sektioner
+
+Inget får kännas trasigt på mindre skärmar.
+
+---
+
+## Kodkvalitet
+Krav på implementation:
+- skriv ren och tydlig kod
+- använd TypeScript korrekt
+- dela upp UI i återanvändbara komponenter
+- undvik onödig komplexitet
+- skapa rimliga defaults
+- håll designen konsekvent
+- använd semantisk HTML där det passar
+- håll god struktur för vidareutveckling
+
+---
+
+## Komponenter som gärna får finnas
+Om det passar får du gärna skapa:
+- återanvändbar Button
+- Section wrapper
+- Container
+- ThemeToggle
+- ServiceCard
+- ContactInfo
+- Navbar
+- Footer
+- PageHeader
+
+---
+
+## Copy / textinnehåll
+Du får skapa professionell svensk placeholder-text som passar företaget.
+
+Texten ska låta:
+- trovärdig
+- professionell
+- modern
+- riktad mot företag/kunder
+
+Undvik generisk lorem ipsum om riktig relevant svensk placeholdertext kan användas.
+
+---
+
+## Viktiga prioriteringar
+Prioritera i denna ordning:
+
+1. fungerande projektsetup
+2. installation av senaste stabila kompatibla paket
+3. snygg modern struktur
+4. fungerande routing
+5. bra designsystem med light/dark theme
+6. responsiv layout
+7. Lenis smooth scroll
+8. basic innehåll på alla fyra sidor
+9. återanvändbara komponenter
+10. polish
+
+---
+
+## Vad du ska leverera
+Du ska:
+- skapa projektet
+- installera allt som behövs
+- konfigurera det
+- bygga grundstrukturen
+- skapa fyra sidor
+- implementera modern design
+- lägga till light/dark theme
+- lägga till tema-knapp
+- lägga till Lenis
+- göra layouten responsiv
+- lämna projektet i ett körbart skick
+
+---
+
+## Extra viktigt
+Fastna inte i smådetaljer.  
+Bygg först en stark, snygg och professionell grund som går att vidareutveckla.
+
+Målet är inte ett helt färdigt företagsprojekt med all slutlig text, utan en **mycket stark modern bas** som ser professionell ut och som enkelt går att bygga vidare på.

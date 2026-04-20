@@ -1,0 +1,79 @@
+@theme inline {
+  --font-sans: var(--font-sans-family);
+  --font-display: var(--font-display-family);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --radius-sm: calc(var(--radius) - 10px);
+  --radius-md: calc(var(--radius) - 6px);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  --font-sans-family: 'Manrope', 'Segoe UI', sans-serif;
+  --font-display-family: 'Newsreader', Georgia, serif;
+
+  --background: #f4f7f6;
+  --foreground: #10202e;
+  --primary: #0f6d66;
+  --primary-foreground: #f3fbfa;
+  --secondary: #dfe8e6;
+  --secondary-foreground: #173746;
+  --accent: #d7a257;
+  --accent-foreground: #241a0d;
+  --muted: #e8eff0;
+  --muted-foreground: #5b6f79;
+  --card: rgba(255, 255, 255, 0.82);
+  --card-foreground: #10202e;
+  --border: #d5dfe2;
+  --ring: #0f6d66;
+  --success: #1d8b62;
+  --warning: #c27e2e;
+  --radius: 28px;
+  --shadow-panel:
+    0 24px 70px -34px rgba(11, 27, 36, 0.28),
+    0 12px 24px -18px rgba(11, 27, 36, 0.18);
+  --shadow-soft:
+    0 16px 40px -24px rgba(15, 109, 102, 0.32),
+    0 8px 22px -18px rgba(15, 109, 102, 0.28);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --background: #06131a;
+  --foreground: #edf4f3;
+  --primary: #6ed4cb;
+  --primary-foreground: #051116;
+  --secondary: #12252d;
+  --secondary-foreground: #d9ebe8;
+  --accent: #d7a257;
+  --accent-foreground: #211509;
+  --muted: #0d1c23;
+  --muted-foreground: #99afb7;
+  --card: rgba(11, 25, 32, 0.82);
+  --card-foreground: #edf4f3;
+  --border: #18313b;
+  --ring: #6ed4cb;
+  --success: #5dd3a3;
+  --warning: #f1b15c;
+  --shadow-panel:
+    0 28px 80px -36px rgba(0, 0, 0, 0.62),
+    0 12px 26px -18px rgba(0, 0, 0, 0.46);
+  --shadow-soft:
+    0 18px 48px -24px rgba(110, 212, 203, 0.28),
+    0 10px 24px -20px rgba(110, 212, 203, 0.24);
+  color-scheme: dark;
+}
