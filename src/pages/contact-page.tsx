@@ -1,5 +1,7 @@
+import type { TFunction } from 'i18next'
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans, useTranslation } from 'react-i18next'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -10,22 +12,17 @@ import { Button } from '@/components/ui/button'
 import { fieldBaseStyles, Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { contactDetails, serviceCards } from '@/lib/site-config'
+import { getContactDetails, getServiceCards } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 
-const contactSchema = z.object({
-  company: z.string().trim().min(2, 'Ange företagsnamn.'),
-  email: z.string().trim().email('Ange en giltig e-postadress.'),
-  message: z.string().trim().min(20, 'Beskriv gärna behovet med minst 20 tecken.'),
-  name: z.string().trim().min(2, 'Ange ditt namn.'),
-  phone: z
-    .string()
-    .trim()
-    .refine((value) => value === '' || value.length >= 7, 'Ange ett giltigt telefonnummer.'),
-  service: z.string().trim().min(1, 'Välj vilken tjänst du är intresserad av.'),
-})
-
-type ContactFormValues = z.infer<typeof contactSchema>
+type ContactFormValues = {
+  company: string
+  email: string
+  message: string
+  name: string
+  phone: string
+  service: string
+}
 
 type FeedbackState =
   | {
@@ -40,6 +37,23 @@ const emailJsConfig = {
   templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
 }
 
+function createContactSchema(t: TFunction) {
+  return z.object({
+    company: z.string().trim().min(2, t('forms.contact.validation.company')),
+    email: z.string().trim().email(t('forms.contact.validation.email')),
+    message: z.string().trim().min(20, t('forms.contact.validation.message')),
+    name: z.string().trim().min(2, t('forms.contact.validation.name')),
+    phone: z
+      .string()
+      .trim()
+      .refine(
+        (value) => value === '' || value.length >= 7,
+        t('forms.contact.validation.phone'),
+      ),
+    service: z.string().trim().min(1, t('forms.contact.validation.service')),
+  })
+}
+
 function isEmailJsConfigured() {
   return Boolean(
     emailJsConfig.publicKey &&
@@ -49,7 +63,12 @@ function isEmailJsConfigured() {
 }
 
 export function ContactPage() {
+  const { t } = useTranslation()
   const [feedback, setFeedback] = useState<FeedbackState>(null)
+  const contactDetails = getContactDetails(t)
+  const serviceCards = getServiceCards(t)
+  const contactSchema = createContactSchema(t)
+  const headerChips = t('contact.header.chips', { returnObjects: true }) as string[]
 
   const {
     formState: { errors, isSubmitting },
@@ -71,6 +90,8 @@ export function ContactPage() {
   const onSubmit = handleSubmit(async (values) => {
     setFeedback(null)
 
+    const selectedService = serviceCards.find((service) => service.id === values.service)
+
     try {
       if (isEmailJsConfigured()) {
         await emailjs.send(
@@ -80,9 +101,9 @@ export function ContactPage() {
             company: values.company,
             from_name: values.name,
             message: values.message,
-            phone: values.phone || 'Ej angivet',
+            phone: values.phone || t('forms.contact.notProvided'),
             reply_to: values.email,
-            service: values.service,
+            service: selectedService?.title ?? values.service,
           },
           {
             publicKey: emailJsConfig.publicKey!,
@@ -98,60 +119,62 @@ export function ContactPage() {
       setFeedback({
         tone: 'success',
         message: isEmailJsConfigured()
-          ? 'Tack! Din förfrågan är skickad och vi återkommer så snart vi kan.'
-          : 'Formuläret är klart för användning. Lägg in EmailJS-nycklar i .env för att skicka på riktigt.',
+          ? t('forms.contact.feedback.successConfigured')
+          : t('forms.contact.feedback.successDemo'),
       })
     } catch (error) {
       setFeedback({
         tone: 'error',
         message:
           error instanceof EmailJSResponseStatus
-            ? 'Det gick inte att skicka formuläret just nu. Försök igen om en liten stund.'
-            : 'Något gick fel vid formulärhanteringen. Kontrollera inställningarna och försök igen.',
+            ? t('forms.contact.feedback.errorSend')
+            : t('forms.contact.feedback.errorGeneric'),
       })
     }
   })
 
   return (
     <>
-      <PageMeta
-        title="Kontakt"
-        description="Kontakta Webbekonomi & Webbdesign AB via formulär, e-post eller telefon för att diskutera ekonomi, webbutveckling eller design."
-      />
+      <PageMeta title={t('contact.meta.title')} description={t('contact.meta.description')} />
       <PageHeader
-        eyebrow="Kontakt"
-        title="Berätta vad ni vill förbättra, bygga eller få bättre kontroll över."
-        description="Kontaktsektionen är uppbyggd för att kännas professionell redan nu och kan enkelt kopplas vidare till riktig formulärleverans via EmailJS eller annan backend senare."
-        chips={['Snabb återkoppling', 'Professionell form', 'Klar för vidare integration']}
+        eyebrow={t('contact.header.eyebrow')}
+        title={t('contact.header.title')}
+        description={t('contact.header.description')}
+        chips={headerChips}
       />
 
       <section className="py-14 sm:py-18 lg:py-24">
-        <div className="mx-auto grid w-full max-w-[1180px] gap-6 px-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
+        <div className="mx-auto grid w-full max-w-295 gap-6 px-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
           <div className="surface-panel p-6 sm:p-8">
             <div className="mb-8">
               <p className="text-xs font-semibold uppercase tracking-[0.34em] text-primary">
-                Kontaktformulär
+                {t('contact.form.eyebrow')}
               </p>
-              <h2 className="mt-4 text-3xl leading-tight">Låt oss ta första steget tillsammans.</h2>
-              <p className="mt-4 text-base leading-7">
-                Fyll i formuläret så återkommer vi med ett tydligt nästa steg,
-                oavsett om det gäller ekonomi, webb eller design.
-              </p>
+              <h2 className="mt-4 text-3xl leading-tight">{t('contact.form.title')}</h2>
+              <p className="mt-4 text-base leading-7">{t('contact.form.description')}</p>
             </div>
 
             <form className="grid gap-5" onSubmit={onSubmit} noValidate>
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="grid gap-2">
-                  <Label htmlFor="name">Namn</Label>
-                  <Input id="name" placeholder="Ditt namn" {...register('name')} />
+                  <Label htmlFor="name">{t('forms.contact.fields.name.label')}</Label>
+                  <Input
+                    id="name"
+                    placeholder={t('forms.contact.fields.name.placeholder')}
+                    {...register('name')}
+                  />
                   {errors.name ? (
                     <p className="text-sm text-warning">{errors.name.message}</p>
                   ) : null}
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="company">Företag</Label>
-                  <Input id="company" placeholder="Företagsnamn" {...register('company')} />
+                  <Label htmlFor="company">{t('forms.contact.fields.company.label')}</Label>
+                  <Input
+                    id="company"
+                    placeholder={t('forms.contact.fields.company.placeholder')}
+                    {...register('company')}
+                  />
                   {errors.company ? (
                     <p className="text-sm text-warning">{errors.company.message}</p>
                   ) : null}
@@ -160,11 +183,11 @@ export function ContactPage() {
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="grid gap-2">
-                  <Label htmlFor="email">E-post</Label>
+                  <Label htmlFor="email">{t('forms.contact.fields.email.label')}</Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="namn@foretag.se"
+                    placeholder={t('forms.contact.fields.email.placeholder')}
                     {...register('email')}
                   />
                   {errors.email ? (
@@ -173,8 +196,12 @@ export function ContactPage() {
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="phone">Telefon</Label>
-                  <Input id="phone" placeholder="08-123 45 67" {...register('phone')} />
+                  <Label htmlFor="phone">{t('forms.contact.fields.phone.label')}</Label>
+                  <Input
+                    id="phone"
+                    placeholder={t('forms.contact.fields.phone.placeholder')}
+                    {...register('phone')}
+                  />
                   {errors.phone ? (
                     <p className="text-sm text-warning">{errors.phone.message}</p>
                   ) : null}
@@ -182,7 +209,7 @@ export function ContactPage() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="service">Tjänst</Label>
+                <Label htmlFor="service">{t('forms.contact.fields.service.label')}</Label>
                 <select
                   id="service"
                   defaultValue=""
@@ -190,10 +217,10 @@ export function ContactPage() {
                   {...register('service')}
                 >
                   <option value="" disabled>
-                    Välj tjänsteområde
+                    {t('forms.contact.fields.service.placeholder')}
                   </option>
                   {serviceCards.map((service) => (
-                    <option key={service.title} value={service.title}>
+                    <option key={service.id} value={service.id}>
                       {service.title}
                     </option>
                   ))}
@@ -204,10 +231,10 @@ export function ContactPage() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="message">Meddelande</Label>
+                <Label htmlFor="message">{t('forms.contact.fields.message.label')}</Label>
                 <Textarea
                   id="message"
-                  placeholder="Beskriv nuläge, mål eller vad ni behöver hjälp med."
+                  placeholder={t('forms.contact.fields.message.placeholder')}
                   {...register('message')}
                 />
                 {errors.message ? (
@@ -217,16 +244,15 @@ export function ContactPage() {
 
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <Button type="submit" size="lg" disabled={isSubmitting}>
-                  {isSubmitting ? 'Skickar...' : 'Skicka förfrågan'}
+                  {isSubmitting ? t('forms.contact.submitting') : t('forms.contact.submit')}
                 </Button>
                 <p className="max-w-md text-sm leading-6">
-                  För riktig formulärleverans kan du sätta
-                  {' '}
-                  <code className="rounded bg-muted px-2 py-1 text-foreground">
-                    VITE_EMAILJS_*
-                  </code>
-                  {' '}
-                  i projektets miljövariabler.
+                  <Trans
+                    i18nKey="forms.contact.hint"
+                    components={{
+                      code: <code className="rounded bg-muted px-2 py-1 text-foreground" />,
+                    }}
+                  />
                 </p>
               </div>
 
@@ -247,27 +273,21 @@ export function ContactPage() {
 
           <div className="grid gap-4">
             {contactDetails.map((detail) => (
-              <ContactInfo key={detail.label} {...detail} />
+              <ContactInfo key={detail.id} {...detail} />
             ))}
 
             <div className="surface-panel grid-surface overflow-hidden p-6 sm:p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.34em] text-primary">
-                Kartsektion
+                {t('contact.map.eyebrow')}
               </p>
-              <h2 className="mt-4 text-3xl leading-tight">
-                Plats för karta eller framtida bokningsmodul.
-              </h2>
-              <p className="mt-4 text-base leading-7">
-                Den här panelen fungerar som en tydlig premiumyta redan nu, men är
-                enkel att ersätta med exempelvis Google Maps, boka-möte-flöde eller
-                mer detaljerad kontaktinformation senare.
-              </p>
+              <h2 className="mt-4 text-3xl leading-tight">{t('contact.map.title')}</h2>
+              <p className="mt-4 text-base leading-7">{t('contact.map.description')}</p>
               <div className="mt-8 grid gap-3">
                 <div className="rounded-[22px] border border-border/70 bg-background/70 px-5 py-4 text-sm text-foreground">
-                  Stockholm som bas, digital leverans i hela Sverige.
+                  {t('contact.map.highlights.remoteDelivery')}
                 </div>
                 <div className="rounded-[22px] border border-border/70 bg-background/70 px-5 py-4 text-sm text-foreground">
-                  Passar både löpande samarbete och avgränsade projektstarter.
+                  {t('contact.map.highlights.projectFit')}
                 </div>
               </div>
             </div>

@@ -1,3 +1,4 @@
+import type { TFunction } from 'i18next'
 import type { LucideIcon } from 'lucide-react'
 import {
   BadgeCheck,
@@ -19,9 +20,8 @@ import {
   Waypoints,
 } from 'lucide-react'
 
-export const companyName = 'Webbekonomi & Webbdesign AB'
-
 export type NavigationLink = {
+  id: string
   label: string
   to: string
 }
@@ -29,6 +29,7 @@ export type NavigationLink = {
 export type FeatureItem = {
   description: string
   icon: LucideIcon
+  id: string
   title: string
 }
 
@@ -40,198 +41,179 @@ export type ContactItem = {
   description: string
   href?: string
   icon: LucideIcon
+  id: string
   label: string
   value: string
 }
 
-export const navigationLinks: NavigationLink[] = [
-  { label: 'Hem', to: '/' },
-  { label: 'Om oss', to: '/om-oss' },
-  { label: 'Tjänster', to: '/tjanster' },
-  { label: 'Kontakt', to: '/kontakt' },
-]
+export type TextListItem = {
+  id: string
+  label: string
+}
 
-export const heroHighlights: FeatureItem[] = [
-  {
-    title: 'Ekonomi med affärsnytta',
-    description:
-      'Vi skapar tydliga ekonomiska flöden, rapportering och struktur som ger bättre beslutsunderlag.',
-    icon: BarChart3,
-  },
-  {
-    title: 'Webblösningar som arbetar',
-    description:
-      'Från landningssidor till skalbara företagswebbar med fokus på tydlighet, fart och konvertering.',
-    icon: MonitorSmartphone,
-  },
-  {
-    title: 'Design som bygger förtroende',
-    description:
-      'Visuell riktning, tonalitet och komponenter som får företaget att kännas genomarbetat och modernt.',
-    icon: Palette,
-  },
-]
+type FeatureContent = Pick<FeatureItem, 'description' | 'title'>
+type ServiceContent = FeatureContent & Pick<ServiceItem, 'bullets'>
+type ContactContent = Pick<ContactItem, 'description' | 'label' | 'value'>
 
-export const valuePillars: FeatureItem[] = [
-  {
-    title: 'Helhet istället för silos',
-    description:
-      'När ekonomi, teknik och design samverkar blir både besluten tydligare och kundupplevelsen starkare.',
-    icon: Waypoints,
-  },
-  {
-    title: 'Trygg leverans',
-    description:
-      'Vi prioriterar struktur, realistiska vägval och lösningar som fungerar direkt i vardagen.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Affärsfokus i varje detalj',
-    description:
-      'Det visuella ska stötta affären, inte stå vid sidan av. Därför börjar vi alltid med målet.',
-    icon: Target,
-  },
-]
+const navigationDefinitions = [
+  { id: 'home', key: 'nav.home', to: '/' },
+  { id: 'about', key: 'nav.about', to: '/om-oss' },
+  { id: 'services', key: 'nav.services', to: '/tjanster' },
+  { id: 'contact', key: 'nav.contact', to: '/kontakt' },
+] as const
 
-export const serviceCards: ServiceItem[] = [
-  {
-    title: 'Ekonomi & rapportering',
-    description:
-      'För bolag som vill få bättre kontroll, tydligare underlag och en mer stabil ekonomisk vardag.',
-    icon: Building2,
-    bullets: [
-      'Struktur för löpande ekonomi och uppföljning',
-      'Rapporter som förenklar beslut och prioriteringar',
-      'Rådgivning som kopplar siffror till affärsmål',
-    ],
-  },
-  {
-    title: 'Webbutveckling',
-    description:
-      'Moderna webbplatser och digitala lösningar som är snabba, responsiva och byggda för att kunna växa.',
-    icon: MonitorSmartphone,
-    bullets: [
-      'Responsiva företagswebbar med tydlig informationsstruktur',
-      'Teknisk grund som är lätt att vidareutveckla',
-      'Fokus på prestanda, innehåll och användarflöde',
-    ],
-  },
-  {
-    title: 'Webbdesign & varumärkesyta',
-    description:
-      'Designsystem, tonalitet och visuella beslut som lyfter kvaliteten i varje digital kontaktpunkt.',
-    icon: LayoutGrid,
-    bullets: [
-      'Designriktning som passar ett modernt företag',
-      'Konsekventa komponenter och visuella principer',
-      'Premiumkänsla utan att bli överarbetad',
-    ],
-  },
-  {
-    title: 'Digital rådgivning',
-    description:
-      'Praktiskt stöd för prioriteringar, förbättringar och vägval när företaget ska utvecklas digitalt.',
-    icon: MessageSquareText,
-    bullets: [
-      'Analys av nuläge, målbild och förbättringsmöjligheter',
-      'Prioritering av rätt nästa steg',
-      'Löpande bollplank för webb, processer och affär',
-    ],
-  },
-]
+const heroHighlightDefinitions = [
+  { icon: BarChart3, id: 'businessValue', key: 'content.heroHighlights.businessValue' },
+  { icon: MonitorSmartphone, id: 'webSolutions', key: 'content.heroHighlights.webSolutions' },
+  { icon: Palette, id: 'designTrust', key: 'content.heroHighlights.designTrust' },
+] as const
 
-export const processSteps: FeatureItem[] = [
-  {
-    title: '1. Nuläge & mål',
-    description:
-      'Vi kartlägger nuläget, vilka flaskhalsar som finns och vilken nivå som är rätt att sikta på.',
-    icon: Sparkles,
-  },
-  {
-    title: '2. Riktning & prioritering',
-    description:
-      'Tillsammans väljer vi lösningen som ger tydlig effekt nu, men som också håller över tid.',
-    icon: Target,
-  },
-  {
-    title: '3. Leverans i tydliga steg',
-    description:
-      'Arbetet delas upp i begripliga leveranser med professionell struktur och löpande avstämningar.',
-    icon: BadgeCheck,
-  },
-  {
-    title: '4. Förädling & stöd',
-    description:
-      'När grunden är på plats kan vi fortsätta utveckla, förbättra och stötta utifrån nästa behov.',
-    icon: Handshake,
-  },
-]
+const valuePillarDefinitions = [
+  { icon: Waypoints, id: 'holistic', key: 'content.valuePillars.holistic' },
+  { icon: ShieldCheck, id: 'reliableDelivery', key: 'content.valuePillars.reliableDelivery' },
+  { icon: Target, id: 'businessFocus', key: 'content.valuePillars.businessFocus' },
+] as const
 
-export const reasonsToChooseUs: FeatureItem[] = [
-  {
-    title: 'En kontaktväg för flera behov',
-    description:
-      'Ni slipper samordna ekonomi, teknik och design mellan flera olika parter.',
-    icon: Globe,
-  },
-  {
-    title: 'Tydlig kommunikation',
-    description:
-      'Vi gör komplexa frågor begripliga och håller projekten lätta att följa för både ledning och team.',
-    icon: MessageSquareText,
-  },
-  {
-    title: 'Modern men affärsmässig form',
-    description:
-      'Det visuella ska inge förtroende och samtidigt kännas aktuellt, tekniskt och professionellt.',
-    icon: Palette,
-  },
-  {
-    title: 'Praktiska lösningar som håller',
-    description:
-      'Vi bygger inte för att imponera i en presentation, utan för att arbetet ska fungera i verkligheten.',
-    icon: ShieldCheck,
-  },
-]
+const serviceCardDefinitions = [
+  { icon: Building2, id: 'financeReporting', key: 'content.serviceCards.financeReporting' },
+  { icon: MonitorSmartphone, id: 'webDevelopment', key: 'content.serviceCards.webDevelopment' },
+  { icon: LayoutGrid, id: 'brandExperience', key: 'content.serviceCards.brandExperience' },
+  { icon: MessageSquareText, id: 'digitalAdvisory', key: 'content.serviceCards.digitalAdvisory' },
+] as const
 
-export const contactDetails: ContactItem[] = [
+const processStepDefinitions = [
+  { icon: Sparkles, id: 'currentState', key: 'content.processSteps.currentState' },
+  { icon: Target, id: 'direction', key: 'content.processSteps.direction' },
+  { icon: BadgeCheck, id: 'delivery', key: 'content.processSteps.delivery' },
+  { icon: Handshake, id: 'refinement', key: 'content.processSteps.refinement' },
+] as const
+
+const reasonDefinitions = [
+  { icon: Globe, id: 'onePartner', key: 'content.reasons.onePartner' },
+  { icon: MessageSquareText, id: 'communication', key: 'content.reasons.communication' },
+  { icon: Palette, id: 'modernForm', key: 'content.reasons.modernForm' },
+  { icon: ShieldCheck, id: 'practical', key: 'content.reasons.practical' },
+] as const
+
+const contactDetailDefinitions = [
   {
-    label: 'E-post',
-    value: 'kontakt@webbekonomiwebbdesign.se',
     href: 'mailto:kontakt@webbekonomiwebbdesign.se',
-    description: 'För offertförfrågningar, uppstart och löpande frågor.',
     icon: Mail,
+    id: 'email',
+    key: 'content.contactDetails.email',
   },
   {
-    label: 'Telefon',
-    value: '08-123 45 67',
     href: 'tel:+4681234567',
-    description: 'Tillgängligt vardagar för snabb första kontakt.',
     icon: Phone,
+    id: 'phone',
+    key: 'content.contactDetails.phone',
   },
   {
-    label: 'Plats',
-    value: 'Stockholm med arbete i hela Sverige',
-    description: 'Möten på plats, digitalt eller i hybridformat.',
+    href: undefined,
     icon: MapPinned,
+    id: 'location',
+    key: 'content.contactDetails.location',
   },
   {
-    label: 'Svarstid',
-    value: 'Inom 1 arbetsdag',
-    description: 'Snabb återkoppling när ni vill komma vidare.',
+    href: undefined,
     icon: Clock3,
+    id: 'responseTime',
+    key: 'content.contactDetails.responseTime',
   },
-]
+] as const
 
-export const serviceAreas = [
-  'Stockholm',
-  'Uppsala',
-  'Mälardalen',
-  'Digitalt i hela Sverige',
-]
+const serviceAreaDefinitions = [
+  { id: 'stockholm', key: 'content.serviceAreas.stockholm' },
+  { id: 'uppsala', key: 'content.serviceAreas.uppsala' },
+  { id: 'malardalen', key: 'content.serviceAreas.malardalen' },
+  { id: 'swedenRemote', key: 'content.serviceAreas.swedenRemote' },
+] as const
 
-export const officeFacts = [
-  'Strategimöten digitalt eller på plats',
-  'Projektstarter anpassade efter tempo och omfattning',
-  'Löpande stöd för både vardagsfrågor och större utvecklingssteg',
-]
+const officeFactDefinitions = [
+  { id: 'meetings', key: 'content.officeFacts.meetings' },
+  { id: 'projectStarts', key: 'content.officeFacts.projectStarts' },
+  { id: 'ongoingSupport', key: 'content.officeFacts.ongoingSupport' },
+] as const
+
+function getFeatureContent(t: TFunction, key: string): FeatureContent {
+  return t(key, { returnObjects: true }) as FeatureContent
+}
+
+function getServiceContent(t: TFunction, key: string): ServiceContent {
+  return t(key, { returnObjects: true }) as ServiceContent
+}
+
+function getContactContent(t: TFunction, key: string): ContactContent {
+  return t(key, { returnObjects: true }) as ContactContent
+}
+
+export function getNavigationLinks(t: TFunction): NavigationLink[] {
+  return navigationDefinitions.map(({ id, key, to }) => ({
+    id,
+    label: t(key),
+    to,
+  }))
+}
+
+export function getHeroHighlights(t: TFunction): FeatureItem[] {
+  return heroHighlightDefinitions.map(({ icon, id, key }) => ({
+    id,
+    icon,
+    ...getFeatureContent(t, key),
+  }))
+}
+
+export function getValuePillars(t: TFunction): FeatureItem[] {
+  return valuePillarDefinitions.map(({ icon, id, key }) => ({
+    id,
+    icon,
+    ...getFeatureContent(t, key),
+  }))
+}
+
+export function getServiceCards(t: TFunction): ServiceItem[] {
+  return serviceCardDefinitions.map(({ icon, id, key }) => ({
+    id,
+    icon,
+    ...getServiceContent(t, key),
+  }))
+}
+
+export function getProcessSteps(t: TFunction): FeatureItem[] {
+  return processStepDefinitions.map(({ icon, id, key }) => ({
+    id,
+    icon,
+    ...getFeatureContent(t, key),
+  }))
+}
+
+export function getReasonsToChooseUs(t: TFunction): FeatureItem[] {
+  return reasonDefinitions.map(({ icon, id, key }) => ({
+    id,
+    icon,
+    ...getFeatureContent(t, key),
+  }))
+}
+
+export function getContactDetails(t: TFunction): ContactItem[] {
+  return contactDetailDefinitions.map(({ href, icon, id, key }) => ({
+    href,
+    icon,
+    id,
+    ...getContactContent(t, key),
+  }))
+}
+
+export function getServiceAreas(t: TFunction): TextListItem[] {
+  return serviceAreaDefinitions.map(({ id, key }) => ({
+    id,
+    label: t(key),
+  }))
+}
+
+export function getOfficeFacts(t: TFunction): TextListItem[] {
+  return officeFactDefinitions.map(({ id, key }) => ({
+    id,
+    label: t(key),
+  }))
+}

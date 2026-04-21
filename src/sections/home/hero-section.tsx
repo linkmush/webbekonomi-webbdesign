@@ -1,12 +1,18 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Compass } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { Container } from '@/components/container'
 import { Button } from '@/components/ui/button'
 import { fadeUp, staggerContainer, viewport } from '@/lib/motion'
-import { heroHighlights } from '@/lib/site-config'
+import { getHeroHighlights } from '@/lib/site-config'
+
+const heroPillIds = ['businessStructure', 'technicalQuality', 'premiumFeel'] as const
 
 export function HeroSection() {
+  const { t } = useTranslation()
+  const heroHighlights = getHeroHighlights(t)
+
   return (
     <section className="relative overflow-hidden pb-14 pt-14 sm:pb-18 sm:pt-18 lg:pb-24 lg:pt-24">
       <Container>
@@ -20,23 +26,21 @@ export function HeroSection() {
           >
             <p className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-primary">
               <Compass className="size-4" />
-              Ekonomi • Webbutveckling • Webbdesign
+              {t('home.hero.eyebrow')}
             </p>
             <h1 className="mt-6 text-5xl leading-[1.02] sm:text-6xl lg:text-[4.5rem]">
-              Ekonomi, webb och design som bygger ett starkare företag.
+              {t('home.hero.title')}
             </h1>
             <p className="mt-6 max-w-xl text-base leading-8 sm:text-lg">
-              Webbekonomi & Webbdesign AB hjälper företag att skapa lugn i
-              ekonomin, tydlighet i det digitala kundmötet och en mer genomarbetad
-              affärsgrund.
+              {t('home.hero.description')}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
-                <Link to="/kontakt">Boka strategimöte</Link>
+                <Link to="/kontakt">{t('home.hero.primaryCta')}</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link to="/tjanster">
-                  Se våra tjänster
+                  {t('home.hero.secondaryCta')}
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
@@ -53,21 +57,20 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--primary)_18%,transparent),transparent_42%),radial-gradient(circle_at_bottom_right,color-mix(in_srgb,var(--accent)_20%,transparent),transparent_28%)]" />
             <div className="relative">
               <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-background/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-primary">
-                  Affärsstruktur
-                </span>
-                <span className="rounded-full bg-background/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-primary">
-                  Teknisk kvalitet
-                </span>
-                <span className="rounded-full bg-background/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-primary">
-                  Premiumkänsla
-                </span>
+                {heroPillIds.map((pillId) => (
+                  <span
+                    key={pillId}
+                    className="rounded-full bg-background/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-primary"
+                  >
+                    {t(`home.hero.pills.${pillId}`)}
+                  </span>
+                ))}
               </div>
 
               <div className="mt-6 grid gap-4">
-                {heroHighlights.map(({ description, icon: Icon, title }) => (
+                {heroHighlights.map(({ description, icon: Icon, id, title }) => (
                   <motion.div
-                    key={title}
+                    key={id}
                     variants={fadeUp}
                     className="rounded-[24px] border border-border/70 bg-background/76 p-5"
                   >

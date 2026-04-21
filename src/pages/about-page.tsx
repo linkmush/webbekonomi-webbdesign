@@ -1,28 +1,35 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { PageHeader } from '@/components/page-header'
 import { PageMeta } from '@/components/page-meta'
 import { Section } from '@/components/section'
 import { fadeUp, staggerContainer, viewport } from '@/lib/motion'
-import { processSteps, reasonsToChooseUs, valuePillars } from '@/lib/site-config'
+import { getProcessSteps, getReasonsToChooseUs, getValuePillars } from '@/lib/site-config'
 
 export function AboutPage() {
+  const { t } = useTranslation()
+  const valuePillars = getValuePillars(t)
+  const processSteps = getProcessSteps(t)
+  const reasonsToChooseUs = getReasonsToChooseUs(t)
+  const directionParagraphs = t('about.direction.paragraphs', {
+    returnObjects: true,
+  }) as string[]
+  const headerChips = t('about.header.chips', { returnObjects: true }) as string[]
+
   return (
     <>
-      <PageMeta
-        title="Om oss"
-        description="Lär känna Webbekonomi & Webbdesign AB och hur vi kombinerar ekonomi, webbutveckling och design i en affärsmässig helhet."
-      />
+      <PageMeta title={t('about.meta.title')} description={t('about.meta.description')} />
       <PageHeader
-        eyebrow="Om oss"
-        title="Vi bygger lugn, riktning och digital tydlighet för moderna företag."
-        description="Webbekonomi & Webbdesign AB är byggt för företag som vill ha en partner med både affärsperspektiv och teknisk förståelse. Målet är att skapa en stabil grund som känns professionell direkt och går att vidareutveckla över tid."
-        chips={['Vision', 'Arbetssätt', 'Förtroende']}
+        eyebrow={t('about.header.eyebrow')}
+        title={t('about.header.title')}
+        description={t('about.header.description')}
+        chips={headerChips}
       />
 
       <Section
-        eyebrow="Vår riktning"
-        title="Vi tror på tydliga lösningar som gör vardagen enklare och företaget starkare."
-        description="Det ska vara lätt att förstå vad som levereras, varför det spelar roll och hur nästa steg ser ut. Därför bygger vi både design och struktur med samma noggrannhet."
+        eyebrow={t('about.direction.eyebrow')}
+        title={t('about.direction.title')}
+        description={t('about.direction.description')}
       >
         <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <motion.div
@@ -32,19 +39,12 @@ export function AboutPage() {
             viewport={viewport}
             className="surface-panel p-6 sm:p-8"
           >
-            <h3 className="text-3xl leading-tight">
-              En partner för företag som vill utvecklas utan att tappa kontrollen.
-            </h3>
-            <p className="mt-4 text-base leading-7">
-              Vi vet att företag sällan har tid för onödig komplexitet. Därför
-              arbetar vi med tydlig struktur, rak kommunikation och lösningar som
-              känns relevanta för verksamheten, inte bara för tekniken.
-            </p>
-            <p className="mt-4 text-base leading-7">
-              När ekonomi, webb och design samordnas uppstår färre glapp mellan
-              strategi och utförande. Det ger bättre beslutsunderlag internt och
-              en mer förtroendeingivande upplevelse externt.
-            </p>
+            <h3 className="text-3xl leading-tight">{t('about.direction.cardTitle')}</h3>
+            {directionParagraphs.map((paragraph) => (
+              <p key={paragraph} className="mt-4 text-base leading-7">
+                {paragraph}
+              </p>
+            ))}
           </motion.div>
 
           <motion.div
@@ -54,9 +54,9 @@ export function AboutPage() {
             viewport={viewport}
             className="grid gap-4"
           >
-            {valuePillars.map(({ description, icon: Icon, title }) => (
+            {valuePillars.map(({ description, icon: Icon, id, title }) => (
               <motion.div
-                key={title}
+                key={id}
                 variants={fadeUp}
                 className="surface-panel flex gap-4 p-6"
               >
@@ -74,9 +74,9 @@ export function AboutPage() {
       </Section>
 
       <Section
-        eyebrow="Arbetssätt"
-        title="Så bygger vi projekt som känns tydliga från start."
-        description="En enkel arbetsmodell gör det lättare att hålla fokus, fatta beslut och skapa leveranser som går att lita på."
+        eyebrow={t('about.workflow.eyebrow')}
+        title={t('about.workflow.title')}
+        description={t('about.workflow.description')}
       >
         <motion.div
           variants={staggerContainer}
@@ -85,12 +85,8 @@ export function AboutPage() {
           viewport={viewport}
           className="grid gap-4 md:grid-cols-2 xl:grid-cols-4"
         >
-          {processSteps.map(({ description, icon: Icon, title }) => (
-            <motion.article
-              key={title}
-              variants={fadeUp}
-              className="surface-panel p-6"
-            >
+          {processSteps.map(({ description, icon: Icon, id, title }) => (
+            <motion.article key={id} variants={fadeUp} className="surface-panel p-6">
               <div className="flex size-12 items-center justify-center rounded-2xl bg-primary/12 text-primary">
                 <Icon className="size-5" />
               </div>
@@ -102,9 +98,9 @@ export function AboutPage() {
       </Section>
 
       <Section
-        eyebrow="Varför välja oss"
-        title="En professionell bas som går att bygga vidare på."
-        description="Vi prioriterar inte bara det snygga eller det tekniska var för sig, utan hur allt samspelar när företaget ska växa."
+        eyebrow={t('about.reasons.eyebrow')}
+        title={t('about.reasons.title')}
+        description={t('about.reasons.description')}
       >
         <motion.div
           variants={staggerContainer}
@@ -113,12 +109,8 @@ export function AboutPage() {
           viewport={viewport}
           className="grid gap-4 md:grid-cols-2"
         >
-          {reasonsToChooseUs.map(({ description, icon: Icon, title }) => (
-            <motion.article
-              key={title}
-              variants={fadeUp}
-              className="surface-panel flex gap-4 p-6"
-            >
+          {reasonsToChooseUs.map(({ description, icon: Icon, id, title }) => (
+            <motion.article key={id} variants={fadeUp} className="surface-panel flex gap-4 p-6">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-primary/12 text-primary">
                 <Icon className="size-5" />
               </div>

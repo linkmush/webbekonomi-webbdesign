@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet'
-import { companyName } from '@/lib/site-config'
+import { useTranslation } from 'react-i18next'
 
 type PageMetaProps = {
   description: string
@@ -7,7 +7,8 @@ type PageMetaProps = {
 }
 
 export function PageMeta({ description, title }: PageMetaProps) {
-  const fullTitle = `${title} | ${companyName}`
+  const { t } = useTranslation()
+  const fullTitle = `${title} | ${t('site.name')}`
 
   return (
     <Helmet>

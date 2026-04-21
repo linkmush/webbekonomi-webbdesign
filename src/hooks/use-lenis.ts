@@ -8,9 +8,9 @@ export function useLenis() {
     }
 
     const lenis = new Lenis({
-      duration: 1.05,
+      duration: 1.6,
       smoothWheel: true,
-      touchMultiplier: 1.15,
+      touchMultiplier: 0.8,
     })
 
     let frame = 0

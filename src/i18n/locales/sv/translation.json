@@ -1,0 +1,360 @@
+{
+  "site": {
+    "mark": "WE",
+    "name": "Webbekonomi & Webbdesign AB"
+  },
+  "languages": {
+    "en": "English",
+    "sv": "Svenska",
+    "vi": "Tiếng Việt"
+  },
+  "nav": {
+    "home": "Hem",
+    "about": "Om oss",
+    "services": "Tjänster",
+    "contact": "Kontakt",
+    "tagline": "Ekonomi • Webb • Design",
+    "primaryCta": "Boka ett möte",
+    "mobileCta": "Kontakta oss",
+    "openMenu": "Öppna meny",
+    "closeMenu": "Stäng meny",
+    "language": "Språk"
+  },
+  "ui": {
+    "theme": {
+      "lightMode": "Ljust läge",
+      "darkMode": "Mörkt läge",
+      "switchToLight": "Växla till ljust tema",
+      "switchToDark": "Växla till mörkt tema"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Hem",
+      "description": "Modern, responsiv företagswebb för Webbekonomi & Webbdesign AB med fokus på ekonomi, webbutveckling och design."
+    },
+    "hero": {
+      "eyebrow": "Ekonomi • Webbutveckling • Webbdesign",
+      "title": "Ekonomi, webb och design som bygger ett starkare företag.",
+      "description": "Webbekonomi & Webbdesign AB hjälper företag att skapa lugn i ekonomin, tydlighet i det digitala kundmötet och en mer genomarbetad affärsgrund.",
+      "primaryCta": "Boka strategimöte",
+      "secondaryCta": "Se våra tjänster",
+      "pills": {
+        "businessStructure": "Affärsstruktur",
+        "technicalQuality": "Teknisk kvalitet",
+        "premiumFeel": "Premiumkänsla"
+      }
+    },
+    "intro": {
+      "eyebrow": "Ett tydligare helhetserbjudande",
+      "title": "Vi hjälper företag som vill kombinera ekonomisk trygghet med modern digital närvaro.",
+      "description": "För många bolag hänger ekonomi, webb och design ihop mer än man först tror. När de tre områdena utvecklas tillsammans blir helheten både starkare och mer hållbar.",
+      "focusEyebrow": "Fokusområden",
+      "primaryCta": "Läs mer om oss",
+      "secondaryCta": "Utforska hela erbjudandet"
+    },
+    "location": {
+      "eyebrow": "Kontakt & närvaro",
+      "title": "Tydlig kontaktväg, snabb återkoppling och plats för vidare dialog.",
+      "description": "Här finns en enkel grund för kontaktuppgifter och kartsektion. Innehållet kan senare bytas till slutliga uppgifter eller integreras med riktig karta.",
+      "mapEyebrow": "Kartsektion / serviceområde",
+      "mapTitle": "Stockholm, Mälardalen och digitala samarbeten i hela Sverige.",
+      "mapDescription": "Den här ytan är byggd för att enkelt kunna ersättas med en riktig karta senare, men fungerar redan nu som en tydlig platsmarkering i sidans kontaktflöde.",
+      "cta": "Skicka en förfrågan"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "Om oss",
+      "description": "Lär känna Webbekonomi & Webbdesign AB och hur vi kombinerar ekonomi, webbutveckling och design i en affärsmässig helhet."
+    },
+    "header": {
+      "eyebrow": "Om oss",
+      "title": "Vi bygger lugn, riktning och digital tydlighet för moderna företag.",
+      "description": "Webbekonomi & Webbdesign AB är byggt för företag som vill ha en partner med både affärsperspektiv och teknisk förståelse. Målet är att skapa en stabil grund som känns professionell direkt och går att vidareutveckla över tid.",
+      "chips": ["Vision", "Arbetssätt", "Förtroende"]
+    },
+    "direction": {
+      "eyebrow": "Vår riktning",
+      "title": "Vi tror på tydliga lösningar som gör vardagen enklare och företaget starkare.",
+      "description": "Det ska vara lätt att förstå vad som levereras, varför det spelar roll och hur nästa steg ser ut. Därför bygger vi både design och struktur med samma noggrannhet.",
+      "cardTitle": "En partner för företag som vill utvecklas utan att tappa kontrollen.",
+      "paragraphs": [
+        "Vi vet att företag sällan har tid för onödig komplexitet. Därför arbetar vi med tydlig struktur, rak kommunikation och lösningar som känns relevanta för verksamheten, inte bara för tekniken.",
+        "När ekonomi, webb och design samordnas uppstår färre glapp mellan strategi och utförande. Det ger bättre beslutsunderlag internt och en mer förtroendeingivande upplevelse externt."
+      ]
+    },
+    "workflow": {
+      "eyebrow": "Arbetssätt",
+      "title": "Så bygger vi projekt som känns tydliga från start.",
+      "description": "En enkel arbetsmodell gör det lättare att hålla fokus, fatta beslut och skapa leveranser som går att lita på."
+    },
+    "reasons": {
+      "eyebrow": "Varför välja oss",
+      "title": "En professionell bas som går att bygga vidare på.",
+      "description": "Vi prioriterar inte bara det snygga eller det tekniska var för sig, utan hur allt samspelar när företaget ska växa."
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Tjänster",
+      "description": "Utforska Webbekonomi & Webbdesign AB:s tjänster inom ekonomi, webbutveckling, webbdesign och digital rådgivning."
+    },
+    "header": {
+      "eyebrow": "Tjänster",
+      "title": "Fyra fokusområden som stärker både verksamheten och den digitala upplevelsen.",
+      "description": "Tjänsterna är upplagda som en stark modern bas. De kan användas var för sig eller kombineras till en tydlig helhetslösning.",
+      "chips": ["Ekonomi", "Webbutveckling", "Webbdesign", "Rådgivning"]
+    },
+    "offer": {
+      "eyebrow": "Erbjudande",
+      "title": "Professionella leveranser med tydlig struktur.",
+      "description": "Varje område är byggt för att vara lätt att förstå, vidareutveckla och anpassa efter företagets nästa steg."
+    },
+    "delivery": {
+      "eyebrow": "Så levererar vi",
+      "title": "En arbetsmodell som håller fokus på rätt saker.",
+      "description": "Vi vill att projekten ska kännas tydliga, hållbara och enkla att följa. Därför bygger vi upp arbetet i klara steg."
+    },
+    "cta": {
+      "eyebrow": "Nästa steg",
+      "title": "Behöver ni en tydlig väg framåt?",
+      "description": "Vi hjälper gärna till att prioritera rätt första steg och bygga en lösning som känns professionell från början.",
+      "button": "Kontakta oss"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Kontakt",
+      "description": "Kontakta Webbekonomi & Webbdesign AB via formulär, e-post eller telefon för att diskutera ekonomi, webbutveckling eller design."
+    },
+    "header": {
+      "eyebrow": "Kontakt",
+      "title": "Berätta vad ni vill förbättra, bygga eller få bättre kontroll över.",
+      "description": "Kontaktsektionen är uppbyggd för att kännas professionell redan nu och kan enkelt kopplas vidare till riktig formulärleverans via EmailJS eller annan backend senare.",
+      "chips": ["Snabb återkoppling", "Professionell form", "Klar för vidare integration"]
+    },
+    "form": {
+      "eyebrow": "Kontaktformulär",
+      "title": "Låt oss ta första steget tillsammans.",
+      "description": "Fyll i formuläret så återkommer vi med ett tydligt nästa steg, oavsett om det gäller ekonomi, webb eller design."
+    },
+    "map": {
+      "eyebrow": "Kartsektion",
+      "title": "Plats för karta eller framtida bokningsmodul.",
+      "description": "Den här panelen fungerar som en tydlig premiumyta redan nu, men är enkel att ersätta med exempelvis Google Maps, boka-möte-flöde eller mer detaljerad kontaktinformation senare.",
+      "highlights": {
+        "remoteDelivery": "Stockholm som bas, digital leverans i hela Sverige.",
+        "projectFit": "Passar både löpande samarbete och avgränsade projektstarter."
+      }
+    }
+  },
+  "forms": {
+    "contact": {
+      "fields": {
+        "name": {
+          "label": "Namn",
+          "placeholder": "Ditt namn"
+        },
+        "company": {
+          "label": "Företag",
+          "placeholder": "Företagsnamn"
+        },
+        "email": {
+          "label": "E-post",
+          "placeholder": "namn@foretag.se"
+        },
+        "phone": {
+          "label": "Telefon",
+          "placeholder": "08-123 45 67"
+        },
+        "service": {
+          "label": "Tjänst",
+          "placeholder": "Välj tjänsteområde"
+        },
+        "message": {
+          "label": "Meddelande",
+          "placeholder": "Beskriv nuläge, mål eller vad ni behöver hjälp med."
+        }
+      },
+      "validation": {
+        "company": "Ange företagsnamn.",
+        "email": "Ange en giltig e-postadress.",
+        "message": "Beskriv gärna behovet med minst 20 tecken.",
+        "name": "Ange ditt namn.",
+        "phone": "Ange ett giltigt telefonnummer.",
+        "service": "Välj vilken tjänst du är intresserad av."
+      },
+      "submit": "Skicka förfrågan",
+      "submitting": "Skickar...",
+      "hint": "För riktig formulärleverans kan du sätta <code>VITE_EMAILJS_*</code> i projektets miljövariabler.",
+      "notProvided": "Ej angivet",
+      "feedback": {
+        "successConfigured": "Tack! Din förfrågan är skickad och vi återkommer så snart vi kan.",
+        "successDemo": "Formuläret är klart för användning. Lägg in EmailJS-nycklar i .env för att skicka på riktigt.",
+        "errorSend": "Det gick inte att skicka formuläret just nu. Försök igen om en liten stund.",
+        "errorGeneric": "Något gick fel vid formulärhanteringen. Kontrollera inställningarna och försök igen."
+      }
+    }
+  },
+  "footer": {
+    "heading": "Modern partner för ekonomi, webb och design.",
+    "description": "En professionell grund för företag som vill kombinera affärsmässig kontroll med en tydlig digital närvaro.",
+    "quickLinks": "Snabblänkar",
+    "contactArea": "Kontakt & område",
+    "bottom": {
+      "primary": "{{year}} {{siteName}}. Professionell grund för vidare utveckling.",
+      "secondary": "Byggd med React, TypeScript, Tailwind och fokus på responsiv kvalitet."
+    }
+  },
+  "notFound": {
+    "meta": {
+      "title": "Sidan hittades inte",
+      "description": "Den efterfrågade sidan kunde inte hittas."
+    },
+    "section": {
+      "eyebrow": "404",
+      "title": "Den här sidan finns inte.",
+      "description": "Länken kan vara gammal eller felaktig. Du kan fortsätta tillbaka till startsidan eller gå direkt till kontakt."
+    },
+    "primaryCta": "Till startsidan",
+    "secondaryCta": "Kontakta oss"
+  },
+  "content": {
+    "heroHighlights": {
+      "businessValue": {
+        "title": "Ekonomi med affärsnytta",
+        "description": "Vi skapar tydliga ekonomiska flöden, rapportering och struktur som ger bättre beslutsunderlag."
+      },
+      "webSolutions": {
+        "title": "Webblösningar som arbetar",
+        "description": "Från landningssidor till skalbara företagswebbar med fokus på tydlighet, fart och konvertering."
+      },
+      "designTrust": {
+        "title": "Design som bygger förtroende",
+        "description": "Visuell riktning, tonalitet och komponenter som får företaget att kännas genomarbetat och modernt."
+      }
+    },
+    "valuePillars": {
+      "holistic": {
+        "title": "Helhet istället för silos",
+        "description": "När ekonomi, teknik och design samverkar blir både besluten tydligare och kundupplevelsen starkare."
+      },
+      "reliableDelivery": {
+        "title": "Trygg leverans",
+        "description": "Vi prioriterar struktur, realistiska vägval och lösningar som fungerar direkt i vardagen."
+      },
+      "businessFocus": {
+        "title": "Affärsfokus i varje detalj",
+        "description": "Det visuella ska stötta affären, inte stå vid sidan av. Därför börjar vi alltid med målet."
+      }
+    },
+    "serviceCards": {
+      "financeReporting": {
+        "title": "Ekonomi & rapportering",
+        "description": "För bolag som vill få bättre kontroll, tydligare underlag och en mer stabil ekonomisk vardag.",
+        "bullets": [
+          "Struktur för löpande ekonomi och uppföljning",
+          "Rapporter som förenklar beslut och prioriteringar",
+          "Rådgivning som kopplar siffror till affärsmål"
+        ]
+      },
+      "webDevelopment": {
+        "title": "Webbutveckling",
+        "description": "Moderna webbplatser och digitala lösningar som är snabba, responsiva och byggda för att kunna växa.",
+        "bullets": [
+          "Responsiva företagswebbar med tydlig informationsstruktur",
+          "Teknisk grund som är lätt att vidareutveckla",
+          "Fokus på prestanda, innehåll och användarflöde"
+        ]
+      },
+      "brandExperience": {
+        "title": "Webbdesign & varumärkesyta",
+        "description": "Designsystem, tonalitet och visuella beslut som lyfter kvaliteten i varje digital kontaktpunkt.",
+        "bullets": [
+          "Designriktning som passar ett modernt företag",
+          "Konsekventa komponenter och visuella principer",
+          "Premiumkänsla utan att bli överarbetad"
+        ]
+      },
+      "digitalAdvisory": {
+        "title": "Digital rådgivning",
+        "description": "Praktiskt stöd för prioriteringar, förbättringar och vägval när företaget ska utvecklas digitalt.",
+        "bullets": [
+          "Analys av nuläge, målbild och förbättringsmöjligheter",
+          "Prioritering av rätt nästa steg",
+          "Löpande bollplank för webb, processer och affär"
+        ]
+      }
+    },
+    "processSteps": {
+      "currentState": {
+        "title": "1. Nuläge & mål",
+        "description": "Vi kartlägger nuläget, vilka flaskhalsar som finns och vilken nivå som är rätt att sikta på."
+      },
+      "direction": {
+        "title": "2. Riktning & prioritering",
+        "description": "Tillsammans väljer vi lösningen som ger tydlig effekt nu, men som också håller över tid."
+      },
+      "delivery": {
+        "title": "3. Leverans i tydliga steg",
+        "description": "Arbetet delas upp i begripliga leveranser med professionell struktur och löpande avstämningar."
+      },
+      "refinement": {
+        "title": "4. Förädling & stöd",
+        "description": "När grunden är på plats kan vi fortsätta utveckla, förbättra och stötta utifrån nästa behov."
+      }
+    },
+    "reasons": {
+      "onePartner": {
+        "title": "En kontaktväg för flera behov",
+        "description": "Ni slipper samordna ekonomi, teknik och design mellan flera olika parter."
+      },
+      "communication": {
+        "title": "Tydlig kommunikation",
+        "description": "Vi gör komplexa frågor begripliga och håller projekten lätta att följa för både ledning och team."
+      },
+      "modernForm": {
+        "title": "Modern men affärsmässig form",
+        "description": "Det visuella ska inge förtroende och samtidigt kännas aktuellt, tekniskt och professionellt."
+      },
+      "practical": {
+        "title": "Praktiska lösningar som håller",
+        "description": "Vi bygger inte för att imponera i en presentation, utan för att arbetet ska fungera i verkligheten."
+      }
+    },
+    "contactDetails": {
+      "email": {
+        "label": "E-post",
+        "value": "kontakt@webbekonomiwebbdesign.se",
+        "description": "För offertförfrågningar, uppstart och löpande frågor."
+      },
+      "phone": {
+        "label": "Telefon",
+        "value": "08-123 45 67",
+        "description": "Tillgängligt vardagar för snabb första kontakt."
+      },
+      "location": {
+        "label": "Plats",
+        "value": "Stockholm med arbete i hela Sverige",
+        "description": "Möten på plats, digitalt eller i hybridformat."
+      },
+      "responseTime": {
+        "label": "Svarstid",
+        "value": "Inom 1 arbetsdag",
+        "description": "Snabb återkoppling när ni vill komma vidare."
+      }
+    },
+    "serviceAreas": {
+      "stockholm": "Stockholm",
+      "uppsala": "Uppsala",
+      "malardalen": "Mälardalen",
+      "swedenRemote": "Digitalt i hela Sverige"
+    },
+    "officeFacts": {
+      "meetings": "Strategimöten digitalt eller på plats",
+      "projectStarts": "Projektstarter anpassade efter tempo och omfattning",
+      "ongoingSupport": "Löpande stöd för både vardagsfrågor och större utvecklingssteg"
+    }
+  }
+}

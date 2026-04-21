@@ -1,26 +1,26 @@
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { PageMeta } from '@/components/page-meta'
 import { Section } from '@/components/section'
 import { Button } from '@/components/ui/button'
 
 export function NotFoundPage() {
+  const { t } = useTranslation()
+
   return (
     <>
-      <PageMeta
-        title="Sidan hittades inte"
-        description="Den efterfrågade sidan kunde inte hittas."
-      />
+      <PageMeta title={t('notFound.meta.title')} description={t('notFound.meta.description')} />
       <Section
-        eyebrow="404"
-        title="Den här sidan finns inte."
-        description="Länken kan vara gammal eller felaktig. Du kan fortsätta tillbaka till startsidan eller gå direkt till kontakt."
+        eyebrow={t('notFound.section.eyebrow')}
+        title={t('notFound.section.title')}
+        description={t('notFound.section.description')}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">
-            <Link to="/">Till startsidan</Link>
+            <Link to="/">{t('notFound.primaryCta')}</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link to="/kontakt">Kontakta oss</Link>
+            <Link to="/kontakt">{t('notFound.secondaryCta')}</Link>
           </Button>
         </div>
       </Section>

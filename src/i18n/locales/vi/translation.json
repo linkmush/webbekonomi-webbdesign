@@ -1,0 +1,360 @@
+{
+  "site": {
+    "mark": "WE",
+    "name": "Webbekonomi & Webbdesign AB"
+  },
+  "languages": {
+    "en": "English",
+    "sv": "Svenska",
+    "vi": "Tiếng Việt"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Về chúng tôi",
+    "services": "Dịch vụ",
+    "contact": "Liên hệ",
+    "tagline": "Tài chính • Web • Thiết kế",
+    "primaryCta": "Đặt lịch hẹn",
+    "mobileCta": "Liên hệ với chúng tôi",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu",
+    "language": "Ngôn ngữ"
+  },
+  "ui": {
+    "theme": {
+      "lightMode": "Chế độ sáng",
+      "darkMode": "Chế độ tối",
+      "switchToLight": "Chuyển sang giao diện sáng",
+      "switchToDark": "Chuyển sang giao diện tối"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Trang chủ",
+      "description": "Trang web doanh nghiệp hiện đại, responsive cho Webbekonomi & Webbdesign AB với trọng tâm là tài chính, phát triển web và thiết kế."
+    },
+    "hero": {
+      "eyebrow": "Tài chính • Phát triển web • Thiết kế web",
+      "title": "Tài chính, web và thiết kế giúp xây dựng một doanh nghiệp vững mạnh hơn.",
+      "description": "Webbekonomi & Webbdesign AB giúp doanh nghiệp tạo sự vững vàng trong tài chính, sự rõ ràng trong hành trình khách hàng số và một nền tảng kinh doanh chỉn chu hơn.",
+      "primaryCta": "Đặt lịch tư vấn chiến lược",
+      "secondaryCta": "Xem dịch vụ của chúng tôi",
+      "pills": {
+        "businessStructure": "Cấu trúc kinh doanh",
+        "technicalQuality": "Chất lượng kỹ thuật",
+        "premiumFeel": "Cảm giác cao cấp"
+      }
+    },
+    "intro": {
+      "eyebrow": "Một gói dịch vụ tổng thể rõ ràng hơn",
+      "title": "Chúng tôi giúp doanh nghiệp kết hợp sự vững tin tài chính với hiện diện số hiện đại.",
+      "description": "Đối với nhiều doanh nghiệp, tài chính, web và thiết kế gắn kết với nhau nhiều hơn mọi người tưởng. Khi cả ba mảng phát triển cùng nhau, tổng thể sẽ mạnh hơn và bền vững hơn.",
+      "focusEyebrow": "Trọng tâm",
+      "primaryCta": "Tìm hiểu thêm về chúng tôi",
+      "secondaryCta": "Khám phá toàn bộ giải pháp"
+    },
+    "location": {
+      "eyebrow": "Liên hệ & hiện diện",
+      "title": "Kênh liên hệ rõ ràng, phản hồi nhanh và không gian cho đối thoại tiếp theo.",
+      "description": "Phần này tạo nền tảng cho thông tin liên hệ và khu vực bản đồ. Nội dung có thể được thay bằng thông tin chính thức hoặc kết nối với bản đồ thật sau này.",
+      "mapEyebrow": "Khu vực bản đồ / phạm vi dịch vụ",
+      "mapTitle": "Stockholm, vùng Mälaren và hợp tác số trên toàn Thụy Điển.",
+      "mapDescription": "Khu vực này được xây dựng để sau này có thể dễ dàng thay bằng bản đồ thực, nhưng ngay từ bây giờ đã đóng vai trò như một điểm nhấn vị trí rõ ràng trong luồng liên hệ.",
+      "cta": "Gửi yêu cầu"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "Về chúng tôi",
+      "description": "Tìm hiểu Webbekonomi & Webbdesign AB và cách chúng tôi kết hợp tài chính, phát triển web và thiết kế thành một tổng thể định hướng kinh doanh."
+    },
+    "header": {
+      "eyebrow": "Về chúng tôi",
+      "title": "Chúng tôi tạo sự an tâm, định hướng và độ rõ ràng số cho doanh nghiệp hiện đại.",
+      "description": "Webbekonomi & Webbdesign AB được xây dựng cho các doanh nghiệp muốn có một đối tác vừa hiểu kinh doanh vừa hiểu kỹ thuật. Mục tiêu là tạo nên một nền tảng ổn định, chuyên nghiệp ngay từ đầu và có thể tiếp tục phát triển theo thời gian.",
+      "chips": ["Tầm nhìn", "Cách làm việc", "Niềm tin"]
+    },
+    "direction": {
+      "eyebrow": "Định hướng của chúng tôi",
+      "title": "Chúng tôi tin vào những giải pháp rõ ràng giúp công việc hằng ngày dễ dàng hơn và doanh nghiệp mạnh hơn.",
+      "description": "Mọi người cần dễ hiểu điều gì được bàn giao, vì sao nó quan trọng và bước tiếp theo là gì. Vì vậy, chúng tôi xây dựng cả thiết kế lẫn cấu trúc với cùng một mức độ cẩn trọng.",
+      "cardTitle": "Một đối tác cho những doanh nghiệp muốn phát triển mà không đánh mất sự kiểm soát.",
+      "paragraphs": [
+        "Chúng tôi biết doanh nghiệp hiếm khi có thời gian cho sự phức tạp không cần thiết. Vì vậy, chúng tôi làm việc với cấu trúc rõ ràng, giao tiếp thẳng thắn và những giải pháp phù hợp với hoạt động kinh doanh chứ không chỉ với công nghệ.",
+        "Khi tài chính, web và thiết kế được phối hợp với nhau, khoảng cách giữa chiến lược và triển khai sẽ ít hơn. Điều đó tạo nên cơ sở ra quyết định tốt hơn trong nội bộ và trải nghiệm đáng tin cậy hơn ở bên ngoài."
+      ]
+    },
+    "workflow": {
+      "eyebrow": "Cách làm việc",
+      "title": "Cách chúng tôi xây dựng dự án rõ ràng ngay từ đầu.",
+      "description": "Một mô hình làm việc đơn giản giúp dễ giữ tập trung, ra quyết định và tạo ra những hạng mục có thể tin cậy."
+    },
+    "reasons": {
+      "eyebrow": "Vì sao chọn chúng tôi",
+      "title": "Một nền tảng chuyên nghiệp có thể tiếp tục phát triển.",
+      "description": "Chúng tôi không chỉ ưu tiên phần đẹp hay phần kỹ thuật riêng lẻ, mà quan tâm đến cách mọi thứ phối hợp khi doanh nghiệp cần tăng trưởng."
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Dịch vụ",
+      "description": "Khám phá các dịch vụ của Webbekonomi & Webbdesign AB trong lĩnh vực tài chính, phát triển web, thiết kế web và tư vấn số."
+    },
+    "header": {
+      "eyebrow": "Dịch vụ",
+      "title": "Bốn lĩnh vực trọng tâm giúp củng cố cả doanh nghiệp lẫn trải nghiệm số.",
+      "description": "Các dịch vụ được cấu trúc như một nền tảng hiện đại và vững chắc. Có thể sử dụng riêng lẻ hoặc kết hợp thành một giải pháp tổng thể rõ ràng.",
+      "chips": ["Tài chính", "Phát triển web", "Thiết kế web", "Tư vấn"]
+    },
+    "offer": {
+      "eyebrow": "Giải pháp",
+      "title": "Bàn giao chuyên nghiệp với cấu trúc rõ ràng.",
+      "description": "Mỗi mảng được xây dựng để dễ hiểu, dễ mở rộng và dễ điều chỉnh theo bước phát triển tiếp theo của doanh nghiệp."
+    },
+    "delivery": {
+      "eyebrow": "Cách chúng tôi triển khai",
+      "title": "Một mô hình làm việc giữ trọng tâm vào điều quan trọng.",
+      "description": "Chúng tôi muốn dự án luôn rõ ràng, bền vững và dễ theo dõi. Vì vậy, công việc được chia thành các bước cụ thể."
+    },
+    "cta": {
+      "eyebrow": "Bước tiếp theo",
+      "title": "Bạn có cần một hướng đi rõ ràng hơn không?",
+      "description": "Chúng tôi sẵn sàng giúp ưu tiên bước đầu tiên phù hợp và xây dựng một giải pháp chuyên nghiệp ngay từ đầu.",
+      "button": "Liên hệ với chúng tôi"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Liên hệ",
+      "description": "Liên hệ với Webbekonomi & Webbdesign AB qua biểu mẫu, email hoặc điện thoại để trao đổi về tài chính, phát triển web hoặc thiết kế."
+    },
+    "header": {
+      "eyebrow": "Liên hệ",
+      "title": "Hãy cho chúng tôi biết bạn muốn cải thiện, xây dựng hoặc kiểm soát tốt hơn điều gì.",
+      "description": "Phần liên hệ đã được xây dựng để trông chuyên nghiệp ngay từ bây giờ và có thể dễ dàng kết nối với EmailJS hoặc backend khác sau này.",
+      "chips": ["Phản hồi nhanh", "Hình thức chuyên nghiệp", "Sẵn sàng tích hợp tiếp"]
+    },
+    "form": {
+      "eyebrow": "Biểu mẫu liên hệ",
+      "title": "Hãy cùng bắt đầu bước đầu tiên.",
+      "description": "Điền biểu mẫu và chúng tôi sẽ phản hồi với bước tiếp theo rõ ràng, dù đó là về tài chính, web hay thiết kế."
+    },
+    "map": {
+      "eyebrow": "Khu vực bản đồ",
+      "title": "Không gian cho bản đồ hoặc mô-đun đặt lịch trong tương lai.",
+      "description": "Khung này hiện đã hoạt động như một khu vực cao cấp rõ ràng, nhưng sau này có thể dễ dàng thay bằng Google Maps, luồng đặt lịch hoặc thông tin liên hệ chi tiết hơn.",
+      "highlights": {
+        "remoteDelivery": "Lấy Stockholm làm căn cứ, triển khai số trên toàn Thụy Điển.",
+        "projectFit": "Phù hợp cho cả hợp tác dài hạn lẫn các giai đoạn khởi động dự án rõ phạm vi."
+      }
+    }
+  },
+  "forms": {
+    "contact": {
+      "fields": {
+        "name": {
+          "label": "Tên",
+          "placeholder": "Tên của bạn"
+        },
+        "company": {
+          "label": "Công ty",
+          "placeholder": "Tên công ty"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "ten@congty.com"
+        },
+        "phone": {
+          "label": "Điện thoại",
+          "placeholder": "+46 8 123 45 67"
+        },
+        "service": {
+          "label": "Dịch vụ",
+          "placeholder": "Chọn lĩnh vực dịch vụ"
+        },
+        "message": {
+          "label": "Tin nhắn",
+          "placeholder": "Mô tả hiện trạng, mục tiêu hoặc điều bạn cần hỗ trợ."
+        }
+      },
+      "validation": {
+        "company": "Vui lòng nhập tên công ty.",
+        "email": "Vui lòng nhập địa chỉ email hợp lệ.",
+        "message": "Vui lòng mô tả nhu cầu của bạn với ít nhất 20 ký tự.",
+        "name": "Vui lòng nhập tên của bạn.",
+        "phone": "Vui lòng nhập số điện thoại hợp lệ.",
+        "service": "Vui lòng chọn dịch vụ bạn quan tâm."
+      },
+      "submit": "Gửi yêu cầu",
+      "submitting": "Đang gửi...",
+      "hint": "Để gửi biểu mẫu thật, bạn có thể thiết lập <code>VITE_EMAILJS_*</code> trong biến môi trường của dự án.",
+      "notProvided": "Chưa cung cấp",
+      "feedback": {
+        "successConfigured": "Cảm ơn bạn. Yêu cầu của bạn đã được gửi và chúng tôi sẽ phản hồi sớm nhất có thể.",
+        "successDemo": "Biểu mẫu đã sẵn sàng để sử dụng. Hãy thêm các khóa EmailJS vào .env để gửi thật.",
+        "errorSend": "Hiện không thể gửi biểu mẫu. Vui lòng thử lại sau ít phút.",
+        "errorGeneric": "Đã xảy ra lỗi khi xử lý biểu mẫu. Vui lòng kiểm tra cài đặt và thử lại."
+      }
+    }
+  },
+  "footer": {
+    "heading": "Đối tác hiện đại cho tài chính, web và thiết kế.",
+    "description": "Một nền tảng chuyên nghiệp cho doanh nghiệp muốn kết hợp kiểm soát kinh doanh với hiện diện số rõ ràng.",
+    "quickLinks": "Liên kết nhanh",
+    "contactArea": "Liên hệ & khu vực",
+    "bottom": {
+      "primary": "{{year}} {{siteName}}. Nền tảng chuyên nghiệp cho sự phát triển tiếp theo.",
+      "secondary": "Được xây dựng với React, TypeScript, Tailwind và tập trung vào chất lượng responsive."
+    }
+  },
+  "notFound": {
+    "meta": {
+      "title": "Không tìm thấy trang",
+      "description": "Không thể tìm thấy trang bạn yêu cầu."
+    },
+    "section": {
+      "eyebrow": "404",
+      "title": "Trang này không tồn tại.",
+      "description": "Liên kết có thể đã cũ hoặc không chính xác. Bạn có thể quay lại trang chủ hoặc chuyển thẳng tới phần liên hệ."
+    },
+    "primaryCta": "Về trang chủ",
+    "secondaryCta": "Liên hệ với chúng tôi"
+  },
+  "content": {
+    "heroHighlights": {
+      "businessValue": {
+        "title": "Tài chính mang lại giá trị kinh doanh",
+        "description": "Chúng tôi tạo ra luồng tài chính, báo cáo và cấu trúc rõ ràng để hỗ trợ ra quyết định tốt hơn."
+      },
+      "webSolutions": {
+        "title": "Giải pháp web thực sự vận hành",
+        "description": "Từ landing page đến website doanh nghiệp có thể mở rộng, tập trung vào độ rõ ràng, tốc độ và chuyển đổi."
+      },
+      "designTrust": {
+        "title": "Thiết kế tạo dựng niềm tin",
+        "description": "Định hướng hình ảnh, giọng điệu và các thành phần giúp doanh nghiệp trông chỉn chu và hiện đại."
+      }
+    },
+    "valuePillars": {
+      "holistic": {
+        "title": "Một tổng thể thay vì những silo rời rạc",
+        "description": "Khi tài chính, công nghệ và thiết kế phối hợp với nhau, cả quyết định lẫn trải nghiệm khách hàng đều trở nên mạnh mẽ hơn."
+      },
+      "reliableDelivery": {
+        "title": "Triển khai đáng tin cậy",
+        "description": "Chúng tôi ưu tiên cấu trúc, lựa chọn thực tế và những giải pháp phù hợp với vận hành hằng ngày."
+      },
+      "businessFocus": {
+        "title": "Tập trung vào kinh doanh trong từng chi tiết",
+        "description": "Lớp hình ảnh phải hỗ trợ doanh nghiệp chứ không tách rời khỏi nó. Vì vậy chúng tôi luôn bắt đầu từ mục tiêu."
+      }
+    },
+    "serviceCards": {
+      "financeReporting": {
+        "title": "Tài chính & báo cáo",
+        "description": "Dành cho các doanh nghiệp muốn kiểm soát tốt hơn, có cơ sở ra quyết định rõ ràng hơn và một nền tài chính ổn định hơn mỗi ngày.",
+        "bullets": [
+          "Cấu trúc cho công việc tài chính thường xuyên và theo dõi",
+          "Báo cáo giúp đơn giản hóa quyết định và ưu tiên",
+          "Tư vấn gắn các con số với mục tiêu kinh doanh"
+        ]
+      },
+      "webDevelopment": {
+        "title": "Phát triển web",
+        "description": "Website và giải pháp số hiện đại, nhanh, responsive và được xây dựng để có thể phát triển lâu dài.",
+        "bullets": [
+          "Website doanh nghiệp responsive với cấu trúc thông tin rõ ràng",
+          "Nền tảng kỹ thuật dễ mở rộng về sau",
+          "Tập trung vào hiệu năng, nội dung và luồng người dùng"
+        ]
+      },
+      "brandExperience": {
+        "title": "Thiết kế web & không gian thương hiệu",
+        "description": "Hệ thống thiết kế, giọng điệu và các quyết định thị giác giúp nâng chất lượng ở mọi điểm chạm số.",
+        "bullets": [
+          "Định hướng thiết kế phù hợp với doanh nghiệp hiện đại",
+          "Các thành phần nhất quán và nguyên tắc thị giác rõ ràng",
+          "Cảm giác cao cấp nhưng không cầu kỳ quá mức"
+        ]
+      },
+      "digitalAdvisory": {
+        "title": "Tư vấn số",
+        "description": "Hỗ trợ thực tế cho ưu tiên, cải tiến và lựa chọn khi doanh nghiệp phát triển theo hướng số.",
+        "bullets": [
+          "Phân tích hiện trạng, mục tiêu và cơ hội cải thiện",
+          "Ưu tiên bước tiếp theo phù hợp",
+          "Đồng hành thường xuyên về web, quy trình và kinh doanh"
+        ]
+      }
+    },
+    "processSteps": {
+      "currentState": {
+        "title": "1. Hiện trạng & mục tiêu",
+        "description": "Chúng tôi phân tích tình hình hiện tại, xác định các điểm nghẽn và mức độ phù hợp cần hướng tới."
+      },
+      "direction": {
+        "title": "2. Định hướng & ưu tiên",
+        "description": "Cùng nhau, chúng tôi chọn giải pháp tạo ra hiệu quả rõ ràng ngay bây giờ nhưng vẫn bền vững về lâu dài."
+      },
+      "delivery": {
+        "title": "3. Triển khai theo các bước rõ ràng",
+        "description": "Công việc được chia thành các hạng mục dễ hiểu với cấu trúc chuyên nghiệp và các buổi rà soát định kỳ."
+      },
+      "refinement": {
+        "title": "4. Hoàn thiện & hỗ trợ",
+        "description": "Khi nền tảng đã sẵn sàng, chúng tôi có thể tiếp tục phát triển, cải thiện và hỗ trợ theo nhu cầu tiếp theo."
+      }
+    },
+    "reasons": {
+      "onePartner": {
+        "title": "Một đầu mối cho nhiều nhu cầu",
+        "description": "Bạn không cần phải điều phối tài chính, công nghệ và thiết kế giữa nhiều nhà cung cấp khác nhau."
+      },
+      "communication": {
+        "title": "Giao tiếp rõ ràng",
+        "description": "Chúng tôi biến các vấn đề phức tạp thành dễ hiểu và giữ cho dự án luôn dễ theo dõi với cả lãnh đạo lẫn đội ngũ."
+      },
+      "modernForm": {
+        "title": "Hình thức hiện đại nhưng định hướng kinh doanh",
+        "description": "Phần hình ảnh phải tạo được niềm tin đồng thời vẫn mang cảm giác hiện đại, kỹ thuật và chuyên nghiệp."
+      },
+      "practical": {
+        "title": "Giải pháp thực tế và bền vững",
+        "description": "Chúng tôi không xây dựng để gây ấn tượng trên slide thuyết trình mà để công việc vận hành hiệu quả trong thực tế."
+      }
+    },
+    "contactDetails": {
+      "email": {
+        "label": "Email",
+        "value": "kontakt@webbekonomiwebbdesign.se",
+        "description": "Dành cho báo giá, khởi động dự án và các câu hỏi đang xử lý."
+      },
+      "phone": {
+        "label": "Điện thoại",
+        "value": "08-123 45 67",
+        "description": "Có thể liên hệ vào ngày làm việc để trao đổi nhanh ban đầu."
+      },
+      "location": {
+        "label": "Địa điểm",
+        "value": "Stockholm và làm việc trên toàn Thụy Điển",
+        "description": "Có thể họp trực tiếp, trực tuyến hoặc theo mô hình kết hợp."
+      },
+      "responseTime": {
+        "label": "Thời gian phản hồi",
+        "value": "Trong vòng 1 ngày làm việc",
+        "description": "Phản hồi nhanh khi bạn muốn tiếp tục."
+      }
+    },
+    "serviceAreas": {
+      "stockholm": "Stockholm",
+      "uppsala": "Uppsala",
+      "malardalen": "Vùng Mälaren",
+      "swedenRemote": "Triển khai số trên toàn Thụy Điển"
+    },
+    "officeFacts": {
+      "meetings": "Buổi họp chiến lược trực tuyến hoặc trực tiếp",
+      "projectStarts": "Khởi động dự án phù hợp với tiến độ và phạm vi",
+      "ongoingSupport": "Hỗ trợ liên tục cho cả các câu hỏi hằng ngày và các bước phát triển lớn hơn"
+    }
+  }
+}
