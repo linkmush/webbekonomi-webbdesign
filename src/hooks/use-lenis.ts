@@ -1,10 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 
 export function useLenis() {
+  const lenisRef = useRef<Lenis | null>(null)
+
   useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration
+    window.history.scrollRestoration = 'manual'
+
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return
+      lenisRef.current = null
+
+      return () => {
+        window.history.scrollRestoration = previousScrollRestoration
+      }
     }
 
     const lenis = new Lenis({
@@ -12,6 +21,8 @@ export function useLenis() {
       smoothWheel: true,
       touchMultiplier: 0.8,
     })
+
+    lenisRef.current = lenis
 
     let frame = 0
 
@@ -23,8 +34,12 @@ export function useLenis() {
     frame = window.requestAnimationFrame(onFrame)
 
     return () => {
+      lenisRef.current = null
+      window.history.scrollRestoration = previousScrollRestoration
       window.cancelAnimationFrame(frame)
       lenis.destroy()
     }
   }, [])
+
+  return lenisRef
 }

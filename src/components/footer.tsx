@@ -12,14 +12,14 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border/70 pb-8 pt-14">
+    <footer className="border-t border-border/70 pb-8 pt-12 sm:pt-14">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr_0.9fr]">
           <div className="max-w-md">
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-primary">
+            <p className="break-words text-[11px] font-semibold uppercase tracking-[0.24em] text-primary sm:text-xs sm:tracking-[0.34em]">
               {siteName}
             </p>
-            <h2 className="mt-4 text-3xl leading-tight">{t('footer.heading')}</h2>
+            <h2 className="mt-4 text-[1.9rem] leading-tight sm:text-3xl">{t('footer.heading')}</h2>
             <p className="mt-4 text-base leading-7">{t('footer.description')}</p>
           </div>
 
@@ -46,7 +46,9 @@ export function Footer() {
             </p>
             <div className="mt-4 space-y-3 text-sm text-muted-foreground">
               {contactDetails.slice(0, 3).map((item) => (
-                <p key={item.id}>{item.value}</p>
+                <p key={item.id} className="break-words">
+                  {item.value}
+                </p>
               ))}
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
@@ -64,7 +66,7 @@ export function Footer() {
 
         <div className="my-8 h-px w-full soft-divider" />
 
-        <div className="flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:text-sm">
           <p>{t('footer.bottom.primary', { siteName, year })}</p>
           <p>{t('footer.bottom.secondary')}</p>
         </div>

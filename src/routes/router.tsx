@@ -1,10 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { RootLayout } from '@/layout/root-layout'
+import { RootLayout, RootLayoutHydrateFallback } from '@/layout/root-layout'
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    hydrateFallbackElement: <RootLayoutHydrateFallback />,
     children: [
       {
         index: true,

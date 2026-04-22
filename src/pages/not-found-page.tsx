@@ -16,10 +16,10 @@ export function NotFoundPage() {
         description={t('notFound.section.description')}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="w-full sm:w-auto">
             <Link to="/">{t('notFound.primaryCta')}</Link>
           </Button>
-          <Button asChild size="lg" variant="outline">
+          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
             <Link to="/kontakt">{t('notFound.secondaryCta')}</Link>
           </Button>
         </div>

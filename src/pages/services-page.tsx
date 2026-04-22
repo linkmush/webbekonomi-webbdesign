@@ -42,11 +42,11 @@ export function ServicesPage() {
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {processSteps.map(({ description, icon: Icon, id, title }) => (
-            <div key={id} className="surface-panel p-6">
-              <div className="flex size-12 items-center justify-center rounded-2xl bg-primary/12 text-primary">
-                <Icon className="size-5" />
+            <div key={id} className="surface-panel p-5 sm:p-6">
+              <div className="flex size-11 items-center justify-center rounded-2xl bg-primary/12 text-primary sm:size-12">
+                <Icon className="size-4.5 sm:size-5" />
               </div>
-              <h3 className="mt-5 text-2xl">{title}</h3>
+              <h3 className="mt-5 text-[1.35rem] leading-tight sm:text-2xl">{title}</h3>
               <p className="mt-3 text-sm leading-7">{description}</p>
             </div>
           ))}
@@ -54,16 +54,18 @@ export function ServicesPage() {
       </Section>
 
       <Section className="pt-0">
-        <div className="surface-panel overflow-hidden px-6 py-8 sm:px-8 sm:py-10">
+        <div className="surface-panel overflow-hidden px-5 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-primary">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary sm:text-xs sm:tracking-[0.34em]">
                 {t('services.cta.eyebrow')}
               </p>
-              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t('services.cta.title')}</h2>
+              <h2 className="mt-4 text-[1.9rem] leading-tight sm:text-4xl">
+                {t('services.cta.title')}
+              </h2>
               <p className="mt-4 max-w-2xl text-base leading-7">{t('services.cta.description')}</p>
             </div>
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="w-full sm:w-auto">
               <Link to="/kontakt">{t('services.cta.button')}</Link>
             </Button>
           </div>

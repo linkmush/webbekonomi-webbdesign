@@ -1,16 +1,27 @@
 import type { TFunction } from 'i18next'
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { ContactInfo } from '@/components/contact-info'
+import { GoogleMapEmbed } from '@/components/google-map-embed'
 import { PageHeader } from '@/components/page-header'
 import { PageMeta } from '@/components/page-meta'
 import { Button } from '@/components/ui/button'
-import { fieldBaseStyles, Input } from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { getContactDetails, getServiceCards } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
@@ -67,10 +78,12 @@ export function ContactPage() {
   const [feedback, setFeedback] = useState<FeedbackState>(null)
   const contactDetails = getContactDetails(t)
   const serviceCards = getServiceCards(t)
+  const mapQuery = contactDetails.find((item) => item.id === 'location')?.value ?? 'Stockholm, Sweden'
   const contactSchema = createContactSchema(t)
   const headerChips = t('contact.header.chips', { returnObjects: true }) as string[]
 
   const {
+    control,
     formState: { errors, isSubmitting },
     handleSubmit,
     register,
@@ -143,15 +156,19 @@ export function ContactPage() {
         chips={headerChips}
       />
 
-      <section className="py-14 sm:py-18 lg:py-24">
+      <section className="py-12 sm:py-18 lg:py-24">
         <div className="mx-auto grid w-full max-w-295 gap-6 px-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
-          <div className="surface-panel p-6 sm:p-8">
+          <div className="surface-panel p-5 sm:p-8">
             <div className="mb-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-primary">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary sm:text-xs sm:tracking-[0.34em]">
                 {t('contact.form.eyebrow')}
               </p>
-              <h2 className="mt-4 text-3xl leading-tight">{t('contact.form.title')}</h2>
-              <p className="mt-4 text-base leading-7">{t('contact.form.description')}</p>
+              <h2 className="mt-4 text-[1.9rem] leading-tight sm:text-3xl">
+                {t('contact.form.title')}
+              </h2>
+              <p className="mt-4 text-[0.98rem] leading-7 sm:text-base">
+                {t('contact.form.description')}
+              </p>
             </div>
 
             <form className="grid gap-5" onSubmit={onSubmit} noValidate>
@@ -210,21 +227,45 @@ export function ContactPage() {
 
               <div className="grid gap-2">
                 <Label htmlFor="service">{t('forms.contact.fields.service.label')}</Label>
-                <select
-                  id="service"
-                  defaultValue=""
-                  className={cn(fieldBaseStyles, 'h-12')}
-                  {...register('service')}
-                >
-                  <option value="" disabled>
-                    {t('forms.contact.fields.service.placeholder')}
-                  </option>
-                  {serviceCards.map((service) => (
-                    <option key={service.id} value={service.id}>
-                      {service.title}
-                    </option>
-                  ))}
-                </select>
+                <Controller
+                  control={control}
+                  name="service"
+                  render={({ field }) => (
+                    <Select
+                      disabled={isSubmitting}
+                      name={field.name}
+                      value={field.value ?? ''}
+                      onValueChange={(value) => {
+                        field.onChange(value)
+                        field.onBlur()
+                      }}
+                    >
+                      <SelectTrigger
+                        id="service"
+                        aria-invalid={Boolean(errors.service)}
+                        className={cn(
+                          'group',
+                          errors.service
+                            ? 'border-warning/45 focus-visible:border-warning/45 focus-visible:ring-warning/10'
+                            : undefined,
+                        )}
+                      >
+                        <SelectValue placeholder={t('forms.contact.fields.service.placeholder')} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectLabel>{t('forms.contact.fields.service.placeholder')}</SelectLabel>
+                          <SelectSeparator />
+                          {serviceCards.map((service) => (
+                            <SelectItem key={service.id} value={service.id}>
+                              {service.title}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
                 {errors.service ? (
                   <p className="text-sm text-warning">{errors.service.message}</p>
                 ) : null}
@@ -243,17 +284,9 @@ export function ContactPage() {
               </div>
 
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <Button type="submit" size="lg" disabled={isSubmitting}>
+                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto">
                   {isSubmitting ? t('forms.contact.submitting') : t('forms.contact.submit')}
                 </Button>
-                <p className="max-w-md text-sm leading-6">
-                  <Trans
-                    i18nKey="forms.contact.hint"
-                    components={{
-                      code: <code className="rounded bg-muted px-2 py-1 text-foreground" />,
-                    }}
-                  />
-                </p>
               </div>
 
               {feedback ? (
@@ -276,18 +309,18 @@ export function ContactPage() {
               <ContactInfo key={detail.id} {...detail} />
             ))}
 
-            <div className="surface-panel grid-surface overflow-hidden p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-primary">
+            <div className="surface-panel grid-surface overflow-hidden p-5 sm:p-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary sm:text-xs sm:tracking-[0.34em]">
                 {t('contact.map.eyebrow')}
               </p>
-              <h2 className="mt-4 text-3xl leading-tight">{t('contact.map.title')}</h2>
-              <p className="mt-4 text-base leading-7">{t('contact.map.description')}</p>
+              <GoogleMapEmbed
+                className="mt-6 aspect-[1.08/1] min-h-72 sm:mt-8 sm:min-h-96"
+                query={mapQuery}
+                title={t('contact.map.title')}
+              />
               <div className="mt-8 grid gap-3">
                 <div className="rounded-[22px] border border-border/70 bg-background/70 px-5 py-4 text-sm text-foreground">
                   {t('contact.map.highlights.remoteDelivery')}
-                </div>
-                <div className="rounded-[22px] border border-border/70 bg-background/70 px-5 py-4 text-sm text-foreground">
-                  {t('contact.map.highlights.projectFit')}
                 </div>
               </div>
             </div>

@@ -1,0 +1,58 @@
+:root {
+  --floating-lines-opacity: 0.56;
+}
+
+[data-theme='dark'] {
+  --floating-lines-opacity: 0.88;
+}
+
+.floating-lines-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--floating-lines-opacity);
+}
+
+.floating-lines-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at top, color-mix(in srgb, var(--primary) 10%, transparent), transparent 58%),
+    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 30%);
+  pointer-events: none;
+}
+
+.floating-lines-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    radial-gradient(circle at center, transparent 42%, color-mix(in srgb, var(--background) 18%, transparent) 100%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--background) 10%, transparent),
+      transparent 18%,
+      transparent 78%,
+      color-mix(in srgb, var(--background) 20%, transparent)
+    );
+  pointer-events: none;
+}
+
+.floating-lines-container canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  filter: saturate(0.92) contrast(1.04);
+}
+
+[data-theme='dark'] .floating-lines-container canvas {
+  filter: saturate(1.04) contrast(1.08);
+}
