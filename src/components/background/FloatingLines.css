@@ -2,6 +2,21 @@
   --floating-lines-opacity: 0.56;
 }
 
+.floating-lines-viewport {
+  position: fixed;
+  inset: 0;
+}
+
+@media (max-width: 767px) {
+  .floating-lines-viewport {
+    inset-inline: 0;
+    top: 0;
+    bottom: auto;
+    height: 100vh;
+    height: 100lvh;
+  }
+}
+
 [data-theme='dark'] {
   --floating-lines-opacity: 0.88;
 }

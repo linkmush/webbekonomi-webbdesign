@@ -601,14 +601,42 @@ export default function FloatingLines({
     const timer = new Timer()
     timer.connect(document)
 
+    let stableMobileWidth = 0
+    let stableMobileHeight = 0
+    let lastRendererWidth = 0
+    let lastRendererHeight = 0
+
     const setSize = () => {
-      const width = container.clientWidth || 1
-      const height = container.clientHeight || 1
+      let width = container.clientWidth || 1
+      let height = container.clientHeight || 1
+
+      if (isDecorativeOnly) {
+        const widthChanged = Math.abs(width - stableMobileWidth) > 1
+
+        if (stableMobileWidth === 0 || widthChanged) {
+          stableMobileWidth = width
+          stableMobileHeight = height
+        } else {
+          // Mobile browsers often change the visual viewport height while scrolling.
+          // Keeping the largest observed height prevents the shader from rebasing
+          // and making the lines look like they restart between sections.
+          stableMobileHeight = Math.max(stableMobileHeight, height)
+          width = stableMobileWidth
+          height = stableMobileHeight
+        }
+      }
+
+      if (width === lastRendererWidth && height === lastRendererHeight) {
+        return
+      }
+
       const maxPixelRatio = isDecorativeOnly ? MOBILE_MAX_PIXEL_RATIO : DESKTOP_MAX_PIXEL_RATIO
 
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio))
       renderer.setSize(width, height, false)
       uniforms.iResolution.value.set(renderer.domElement.width, renderer.domElement.height, 1)
+      lastRendererWidth = width
+      lastRendererHeight = height
     }
 
     const suspendInteraction = () => {

@@ -24,7 +24,7 @@ function RootLayoutShell({ children }: PropsWithChildren) {
       <div className="pointer-events-none fixed -right-32 top-40 z-0 h-80 w-80 rounded-full bg-[color-mix(in_srgb,var(--accent)_22%,transparent)] blur-3xl" />
       <div className="pointer-events-none fixed -left-32 top-80 z-0 h-72 w-72 rounded-full bg-[color-mix(in_srgb,var(--primary)_16%,transparent)] blur-3xl" />
       */}
-      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
+      <div aria-hidden="true" className="floating-lines-viewport pointer-events-none fixed inset-0 z-0">
         <FloatingLines
           animationSpeed={0.7}
           bendRadius={4.5}
