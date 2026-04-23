@@ -37,9 +37,9 @@ export function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
-            className="surface-panel p-5 sm:p-8"
+            className="surface-panel p-4 sm:p-8"
           >
-            <h3 className="text-[1.9rem] leading-tight sm:text-3xl">
+            <h3 className="text-[1.7rem] leading-tight min-[390px]:text-[1.9rem] sm:text-3xl">
               {t('about.direction.cardTitle')}
             </h3>
             {directionParagraphs.map((paragraph) => (
@@ -60,13 +60,15 @@ export function AboutPage() {
               <motion.div
                 key={id}
                 variants={fadeUp}
-                className="surface-panel flex gap-4 p-5 sm:p-6"
+                className="surface-panel flex items-start gap-4 p-4 max-[500px]:flex-col max-[500px]:gap-3 sm:p-6"
               >
                 <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/12 text-primary sm:size-12">
                   <Icon className="size-4.5 sm:size-5" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-[1.35rem] leading-tight sm:text-2xl">{title}</h3>
+                  <h3 className="text-[1.2rem] leading-tight min-[390px]:text-[1.35rem] sm:text-2xl">
+                    {title}
+                  </h3>
                   <p className="mt-2 text-sm leading-7">{description}</p>
                 </div>
               </motion.div>
@@ -88,11 +90,13 @@ export function AboutPage() {
           className="grid gap-4 md:grid-cols-2 xl:grid-cols-4"
         >
           {processSteps.map(({ description, icon: Icon, id, title }) => (
-            <motion.article key={id} variants={fadeUp} className="surface-panel p-5 sm:p-6">
+            <motion.article key={id} variants={fadeUp} className="surface-panel p-4 sm:p-6">
               <div className="flex size-11 items-center justify-center rounded-2xl bg-primary/12 text-primary sm:size-12">
                 <Icon className="size-4.5 sm:size-5" />
               </div>
-              <h3 className="mt-5 text-[1.35rem] leading-tight sm:text-2xl">{title}</h3>
+              <h3 className="mt-5 text-[1.2rem] leading-tight min-[390px]:text-[1.35rem] sm:text-2xl">
+                {title}
+              </h3>
               <p className="mt-3 text-sm leading-7">{description}</p>
             </motion.article>
           ))}
@@ -115,13 +119,15 @@ export function AboutPage() {
             <motion.article
               key={id}
               variants={fadeUp}
-              className="surface-panel flex gap-4 p-5 sm:p-6"
+              className="surface-panel flex items-start gap-4 p-4 max-[500px]:flex-col max-[500px]:gap-3 sm:p-6"
             >
               <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/12 text-primary sm:size-12">
                 <Icon className="size-4.5 sm:size-5" />
               </div>
               <div className="min-w-0">
-                <h3 className="text-[1.35rem] leading-tight sm:text-2xl">{title}</h3>
+                <h3 className="text-[1.2rem] leading-tight min-[390px]:text-[1.35rem] sm:text-2xl">
+                  {title}
+                </h3>
                 <p className="mt-2 text-sm leading-7">{description}</p>
               </div>
             </motion.article>

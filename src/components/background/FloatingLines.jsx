@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   Mesh,
   OrthographicCamera,
@@ -223,6 +223,14 @@ void main() {
 
 const MAX_GRADIENT_STOPS = 8
 const OFFSCREEN_POINTER = -1000
+const SMALL_SCREEN_MEDIA_QUERY = '(max-width: 767px)'
+const COARSE_POINTER_MEDIA_QUERY = '(pointer: coarse)'
+const NO_HOVER_MEDIA_QUERY = '(hover: none)'
+const DESKTOP_MAX_PIXEL_RATIO = 1.5
+const MOBILE_MAX_PIXEL_RATIO = 1
+const MOBILE_FRAME_DURATION = 1000 / 30
+const SUSPENDED_DAMPING_FACTOR = 0.5
+const MIN_SUSPENDED_DAMPING = 0.02
 const INTERACTIVE_TARGET_SELECTOR = [
   'a',
   'button',
@@ -253,6 +261,34 @@ const INTERACTIVE_TARGET_SELECTOR = [
   '[data-interactive]',
   '[data-radix-popper-content-wrapper]',
 ].join(', ')
+
+function addMediaQueryListener(mediaQuery, listener) {
+  if (typeof mediaQuery.addEventListener === 'function') {
+    mediaQuery.addEventListener('change', listener)
+
+    return () => {
+      mediaQuery.removeEventListener('change', listener)
+    }
+  }
+
+  mediaQuery.addListener(listener)
+
+  return () => {
+    mediaQuery.removeListener(listener)
+  }
+}
+
+function getIsDecorativeOnlyViewport() {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    return false
+  }
+
+  return [
+    SMALL_SCREEN_MEDIA_QUERY,
+    COARSE_POINTER_MEDIA_QUERY,
+    NO_HOVER_MEDIA_QUERY,
+  ].some((query) => window.matchMedia(query).matches)
+}
 
 function clampColorChannel(value) {
   return Math.min(255, Math.max(0, value))
@@ -382,6 +418,7 @@ export default function FloatingLines({
   themeKey = 'light',
   mixBlendMode = 'normal',
 }) {
+  const [isDecorativeOnly, setIsDecorativeOnly] = useState(getIsDecorativeOnlyViewport)
   const containerRef = useRef(null)
   const targetMouseRef = useRef(new Vector2(OFFSCREEN_POINTER, OFFSCREEN_POINTER))
   const currentMouseRef = useRef(new Vector2(OFFSCREEN_POINTER, OFFSCREEN_POINTER))
@@ -414,6 +451,34 @@ export default function FloatingLines({
   const bottomLineDistance = enabledWaves.includes('bottom') ? getLineDistance('bottom') * 0.01 : 0.01
 
   useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return undefined
+    }
+
+    const mediaQueries = [
+      window.matchMedia(SMALL_SCREEN_MEDIA_QUERY),
+      window.matchMedia(COARSE_POINTER_MEDIA_QUERY),
+      window.matchMedia(NO_HOVER_MEDIA_QUERY),
+    ]
+
+    const updateViewportMode = () => {
+      setIsDecorativeOnly(mediaQueries.some((mediaQuery) => mediaQuery.matches))
+    }
+
+    updateViewportMode()
+
+    const removeListeners = mediaQueries.map((mediaQuery) =>
+      addMediaQueryListener(mediaQuery, updateViewportMode),
+    )
+
+    return () => {
+      removeListeners.forEach((removeListener) => {
+        removeListener()
+      })
+    }
+  }, [])
+
+  useEffect(() => {
     const container = containerRef.current
 
     if (!container) {
@@ -433,13 +498,12 @@ export default function FloatingLines({
 
       renderer = new WebGLRenderer({
         alpha: true,
-        antialias: true,
-        powerPreference: 'high-performance',
+        antialias: !isDecorativeOnly,
+        powerPreference: isDecorativeOnly ? 'low-power' : 'high-performance',
         premultipliedAlpha: true,
       })
       renderer.outputColorSpace = SRGBColorSpace
       renderer.setClearColor(0x000000, 0)
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5))
       renderer.domElement.style.width = '100%'
       renderer.domElement.style.height = '100%'
       renderer.domElement.style.display = 'block'
@@ -460,13 +524,18 @@ export default function FloatingLines({
         : null
 
     const prefersReducedMotion = reduceMotionQuery?.matches ?? false
-    const interactiveEnabled = interactive && !prefersReducedMotion
-    const parallaxEnabled = parallax && !prefersReducedMotion
+    const interactiveEnabled = interactive && !prefersReducedMotion && !isDecorativeOnly
+    const parallaxEnabled = parallax && !prefersReducedMotion && !isDecorativeOnly
+    const effectiveAnimationSpeed = prefersReducedMotion
+      ? animationSpeed * 0.35
+      : isDecorativeOnly
+        ? animationSpeed * 0.6
+        : animationSpeed
 
     const uniforms = {
       iTime: { value: 0 },
       iResolution: { value: new Vector3(1, 1, 1) },
-      animationSpeed: { value: prefersReducedMotion ? animationSpeed * 0.35 : animationSpeed },
+      animationSpeed: { value: effectiveAnimationSpeed },
 
       enableTop: { value: enabledWaves.includes('top') },
       enableMiddle: { value: enabledWaves.includes('middle') },
@@ -497,7 +566,7 @@ export default function FloatingLines({
       bendInfluence: { value: 0 },
 
       parallax: { value: parallaxEnabled },
-      parallaxStrength: { value: parallaxStrength },
+      parallaxStrength: { value: parallaxEnabled ? parallaxStrength : 0 },
       parallaxOffset: { value: new Vector2(0, 0) },
 
       lineGradient: {
@@ -535,7 +604,9 @@ export default function FloatingLines({
     const setSize = () => {
       const width = container.clientWidth || 1
       const height = container.clientHeight || 1
+      const maxPixelRatio = isDecorativeOnly ? MOBILE_MAX_PIXEL_RATIO : DESKTOP_MAX_PIXEL_RATIO
 
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio))
       renderer.setSize(width, height, false)
       uniforms.iResolution.value.set(renderer.domElement.width, renderer.domElement.height, 1)
     }
@@ -543,6 +614,10 @@ export default function FloatingLines({
     const suspendInteraction = () => {
       interactionSuspendedRef.current = true
       targetInfluenceRef.current = 0
+
+      // Freeze the bend origin at the current rendered position so the
+      // influence can ease out smoothly instead of snapping back.
+      targetMouseRef.current.copy(currentMouseRef.current)
       targetParallaxRef.current.set(0, 0)
     }
 
@@ -615,20 +690,44 @@ export default function FloatingLines({
     }
 
     let raf = 0
+    let lastFrameTime = 0
 
     const renderLoop = (time) => {
+      if (isDecorativeOnly && time - lastFrameTime < MOBILE_FRAME_DURATION) {
+        raf = window.requestAnimationFrame(renderLoop)
+        return
+      }
+
+      lastFrameTime = time
       timer.update(time)
       uniforms.iTime.value = timer.getElapsed()
 
       if (interactiveEnabled) {
-        currentMouseRef.current.lerp(targetMouseRef.current, mouseDamping)
+        const suspendedDamping = Math.max(
+          mouseDamping * SUSPENDED_DAMPING_FACTOR,
+          MIN_SUSPENDED_DAMPING,
+        )
+        const activeDamping = interactionSuspendedRef.current
+          ? suspendedDamping
+          : mouseDamping
+
+        currentMouseRef.current.lerp(targetMouseRef.current, activeDamping)
         uniforms.iMouse.value.copy(currentMouseRef.current)
-        currentInfluenceRef.current += (targetInfluenceRef.current - currentInfluenceRef.current) * mouseDamping
+        currentInfluenceRef.current +=
+          (targetInfluenceRef.current - currentInfluenceRef.current) * activeDamping
         uniforms.bendInfluence.value = currentInfluenceRef.current
       }
 
       if (parallaxEnabled) {
-        currentParallaxRef.current.lerp(targetParallaxRef.current, mouseDamping)
+        const suspendedDamping = Math.max(
+          mouseDamping * SUSPENDED_DAMPING_FACTOR,
+          MIN_SUSPENDED_DAMPING,
+        )
+        const activeDamping = interactionSuspendedRef.current
+          ? suspendedDamping
+          : mouseDamping
+
+        currentParallaxRef.current.lerp(targetParallaxRef.current, activeDamping)
         uniforms.parallaxOffset.value.copy(currentParallaxRef.current)
       }
 
@@ -672,6 +771,7 @@ export default function FloatingLines({
     bottomWavePosition.y,
     enabledWaves,
     interactive,
+    isDecorativeOnly,
     lineAlpha,
     linesGradient,
     middleLineCount,

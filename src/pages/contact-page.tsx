@@ -158,15 +158,15 @@ export function ContactPage() {
 
       <section className="py-12 sm:py-18 lg:py-24">
         <div className="mx-auto grid w-full max-w-295 gap-6 px-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
-          <div className="surface-panel p-5 sm:p-8">
+          <div className="surface-panel p-3.5 sm:p-8">
             <div className="mb-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary sm:text-xs sm:tracking-[0.34em]">
+              <p className="break-words text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-xs sm:tracking-[0.34em]">
                 {t('contact.form.eyebrow')}
               </p>
-              <h2 className="mt-4 text-[1.9rem] leading-tight sm:text-3xl">
+              <h2 className="mt-4 text-[1.7rem] leading-tight min-[390px]:text-[1.9rem] sm:text-3xl">
                 {t('contact.form.title')}
               </h2>
-              <p className="mt-4 text-[0.98rem] leading-7 sm:text-base">
+              <p className="mt-4 text-[0.95rem] leading-7 sm:text-base">
                 {t('contact.form.description')}
               </p>
             </div>
@@ -309,17 +309,17 @@ export function ContactPage() {
               <ContactInfo key={detail.id} {...detail} />
             ))}
 
-            <div className="surface-panel grid-surface overflow-hidden p-5 sm:p-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary sm:text-xs sm:tracking-[0.34em]">
+            <div className="surface-panel grid-surface overflow-hidden p-3.5 sm:p-8">
+              <p className="break-words text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-xs sm:tracking-[0.34em]">
                 {t('contact.map.eyebrow')}
               </p>
               <GoogleMapEmbed
-                className="mt-6 aspect-[1.08/1] min-h-72 sm:mt-8 sm:min-h-96"
+                className="mt-6 aspect-[1.08/1] min-h-64 sm:mt-8 sm:min-h-96"
                 query={mapQuery}
                 title={t('contact.map.title')}
               />
               <div className="mt-8 grid gap-3">
-                <div className="rounded-[22px] border border-border/70 bg-background/70 px-5 py-4 text-sm text-foreground">
+                <div className="rounded-[22px] border border-border/70 bg-background/70 px-4 py-4 text-sm text-foreground sm:px-5">
                   {t('contact.map.highlights.remoteDelivery')}
                 </div>
               </div>

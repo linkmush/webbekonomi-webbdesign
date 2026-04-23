@@ -14,24 +14,24 @@ export function HeroSection() {
   const heroHighlights = getHeroHighlights(t)
 
   return (
-    <section className="relative overflow-hidden pb-12 pt-12 sm:pb-18 sm:pt-18 lg:pb-24 lg:pt-24">
+    <section className="relative overflow-hidden pb-10 pt-10 sm:pb-18 sm:pt-18 lg:pb-24 lg:pt-24">
       <Container>
-        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid items-center gap-6 sm:gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             viewport={viewport}
-            className="max-w-2xl"
+            className="min-w-0 max-w-2xl"
           >
-            <p className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-border/70 bg-card/75 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary sm:text-xs sm:tracking-[0.32em]">
+            <p className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-border/70 bg-card/75 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.32em]">
               <Compass className="size-4" />
               {t('home.hero.eyebrow')}
             </p>
-            <h1 className="mt-5 text-[2.85rem] leading-[1.02] sm:mt-6 sm:text-6xl lg:text-[4.5rem]">
+            <h1 className="mt-5 text-[2.05rem] leading-[1.06] min-[375px]:text-[2.2rem] min-[390px]:text-[2.45rem] sm:mt-6 sm:text-6xl lg:text-[4.5rem]">
               {t('home.hero.title')}
             </h1>
-            <p className="mt-5 max-w-xl text-[0.98rem] leading-7 sm:mt-6 sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-7 sm:mt-6 sm:text-lg sm:leading-8">
               {t('home.hero.description')}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -52,15 +52,15 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
             viewport={viewport}
-            className="surface-panel grid-surface relative overflow-hidden p-5 sm:p-7"
+            className="surface-panel grid-surface relative overflow-hidden p-4 sm:p-7"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--primary)_18%,transparent),transparent_42%),radial-gradient(circle_at_bottom_right,color-mix(in_srgb,var(--accent)_20%,transparent),transparent_28%)]" />
             <div className="relative">
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {heroPillIds.map((pillId) => (
                   <span
                     key={pillId}
-                    className="rounded-full bg-background/80 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary sm:text-xs sm:tracking-[0.28em]"
+                    className="max-w-full break-words rounded-full bg-background/80 px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:px-3 sm:text-xs sm:tracking-[0.28em]"
                   >
                     {t(`home.hero.pills.${pillId}`)}
                   </span>
@@ -74,12 +74,14 @@ export function HeroSection() {
                     variants={fadeUp}
                     className="rounded-[24px] border border-border/70 bg-background/76 p-4 sm:p-5"
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4 max-[500px]:flex-col max-[500px]:gap-3">
                       <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/12 text-primary sm:size-12">
                         <Icon className="size-4.5 sm:size-5" />
                       </div>
                       <div className="min-w-0">
-                        <h2 className="text-[1.35rem] leading-tight sm:text-2xl">{title}</h2>
+                        <h2 className="text-[1.2rem] leading-tight min-[390px]:text-[1.35rem] sm:text-2xl">
+                          {title}
+                        </h2>
                         <p className="mt-2 text-sm leading-7">{description}</p>
                       </div>
                     </div>

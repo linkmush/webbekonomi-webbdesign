@@ -26,7 +26,7 @@ export function LocationSection() {
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          className="grid gap-4"
+          className="min-w-0 grid gap-4"
         >
           {contactDetails.map((item) => (
             <motion.div key={item.id} variants={fadeUp}>
@@ -40,16 +40,16 @@ export function LocationSection() {
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          className="surface-panel grid-surface relative overflow-hidden p-5 sm:p-8"
+          className="surface-panel grid-surface relative overflow-hidden p-4 sm:p-8"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--primary)_18%,transparent),transparent_36%),radial-gradient(circle_at_bottom_left,color-mix(in_srgb,var(--accent)_18%,transparent),transparent_26%)]" />
           <div className="relative">
-            <h3 className="mt-4 text-[1.9rem] leading-tight sm:text-4xl">
+            <h3 className="mt-4 text-[1.7rem] leading-tight min-[390px]:text-[1.9rem] sm:text-4xl">
               {t('home.location.mapTitle')}
             </h3>
 
             <GoogleMapEmbed
-              className="mt-6 aspect-[1.14/1] min-h-72 sm:mt-8 sm:min-h-96"
+              className="mt-6 aspect-[1.14/1] min-h-64 sm:mt-8 sm:min-h-96"
               query={mapQuery}
               title={t('home.location.mapTitle')}
             />

@@ -16,15 +16,17 @@ export function Footer() {
       <Container>
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr_0.9fr]">
           <div className="max-w-md">
-            <p className="break-words text-[11px] font-semibold uppercase tracking-[0.24em] text-primary sm:text-xs sm:tracking-[0.34em]">
+            <p className="break-words text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-xs sm:tracking-[0.34em]">
               {siteName}
             </p>
-            <h2 className="mt-4 text-[1.9rem] leading-tight sm:text-3xl">{t('footer.heading')}</h2>
+            <h2 className="mt-4 text-[1.7rem] leading-tight min-[390px]:text-[1.9rem] sm:text-3xl">
+              {t('footer.heading')}
+            </h2>
             <p className="mt-4 text-base leading-7">{t('footer.description')}</p>
           </div>
 
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-foreground">
+            <p className="break-words text-sm font-semibold uppercase tracking-[0.2em] text-foreground sm:tracking-[0.28em]">
               {t('footer.quickLinks')}
             </p>
             <div className="mt-4 grid gap-3">
@@ -41,7 +43,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-foreground">
+            <p className="break-words text-sm font-semibold uppercase tracking-[0.2em] text-foreground sm:tracking-[0.28em]">
               {t('footer.contactArea')}
             </p>
             <div className="mt-4 space-y-3 text-sm text-muted-foreground">

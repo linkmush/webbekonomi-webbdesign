@@ -21,11 +21,15 @@
   html {
     scroll-behavior: auto;
     scrollbar-color: color-mix(in srgb, var(--primary) 72%, transparent) transparent;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
     margin: 0;
     min-width: 320px;
+    overflow-x: clip;
     background:
       radial-gradient(circle at top left, color-mix(in srgb, var(--primary) 16%, transparent), transparent 34%),
       radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 12%, transparent), transparent 24%),
@@ -48,6 +52,15 @@
   textarea,
   select {
     font: inherit;
+    min-width: 0;
+  }
+
+  img,
+  video,
+  canvas,
+  iframe {
+    display: block;
+    max-width: 100%;
   }
 
   h1,
@@ -61,13 +74,19 @@
     font-family: var(--font-display-family);
     font-weight: 600;
     letter-spacing: -0.04em;
+    overflow-wrap: anywhere;
     text-wrap: balance;
   }
 
   p {
     margin: 0;
     color: var(--muted-foreground);
+    overflow-wrap: anywhere;
     text-wrap: pretty;
+  }
+
+  li {
+    overflow-wrap: anywhere;
   }
 
   ::selection {
@@ -78,7 +97,8 @@
 
 @layer components {
   .surface-panel {
-    @apply rounded-[28px] border border-border/70 bg-card/80 backdrop-blur-xl;
+    @apply min-w-0 rounded-[28px] border border-border/70 bg-card/80 backdrop-blur-xl;
+    max-width: 100%;
     box-shadow: var(--shadow-panel);
   }
 
@@ -101,4 +121,16 @@
 
 #root {
   min-height: 100svh;
+  overflow-x: clip;
+}
+
+@media (max-width: 500px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: pretty;
+  }
 }
