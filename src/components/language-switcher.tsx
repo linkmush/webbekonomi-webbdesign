@@ -22,7 +22,7 @@ export function LanguageSwitcher({ align = 'end', className }: LanguageSwitcherP
     languageOptions.find((option) => option.code === currentLanguage) ?? languageOptions[1]
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <button
           type="button"

@@ -1,6 +1,7 @@
 import type { TFunction } from 'i18next'
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -10,18 +11,15 @@ import { GoogleMapEmbed } from '@/components/google-map-embed'
 import { PageHeader } from '@/components/page-header'
 import { PageMeta } from '@/components/page-meta'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { getContactDetails, getServiceCards } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
@@ -230,41 +228,73 @@ export function ContactPage() {
                 <Controller
                   control={control}
                   name="service"
-                  render={({ field }) => (
-                    <Select
-                      disabled={isSubmitting}
-                      name={field.name}
-                      value={field.value ?? ''}
-                      onValueChange={(value) => {
-                        field.onChange(value)
-                        field.onBlur()
-                      }}
-                    >
-                      <SelectTrigger
-                        id="service"
-                        aria-invalid={Boolean(errors.service)}
-                        className={cn(
-                          'group',
-                          errors.service
-                            ? 'border-warning/45 focus-visible:border-warning/45 focus-visible:ring-warning/10'
-                            : undefined,
-                        )}
+                  render={({ field }) => {
+                    const selectedService = serviceCards.find(
+                      (service) => service.id === field.value,
+                    )
+                    const placeholder = t('forms.contact.fields.service.placeholder')
+
+                    return (
+                      <DropdownMenu
+                        modal={false}
+                        onOpenChange={(open) => {
+                          if (!open) {
+                            field.onBlur()
+                          }
+                        }}
                       >
-                        <SelectValue placeholder={t('forms.contact.fields.service.placeholder')} />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          <SelectLabel>{t('forms.contact.fields.service.placeholder')}</SelectLabel>
-                          <SelectSeparator />
-                          {serviceCards.map((service) => (
-                            <SelectItem key={service.id} value={service.id}>
-                              {service.title}
-                            </SelectItem>
-                          ))}
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
-                  )}
+                        <DropdownMenuTrigger asChild>
+                          <button
+                            id="service"
+                            ref={field.ref}
+                            type="button"
+                            name={field.name}
+                            disabled={isSubmitting}
+                            aria-invalid={Boolean(errors.service)}
+                            data-placeholder={selectedService ? undefined : ''}
+                            className={cn(
+                              'group relative flex h-12 w-full items-center justify-between gap-3 rounded-[22px] border border-border bg-background/80 pl-4 pr-13 text-left text-sm text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition outline-none hover:border-primary/24 hover:bg-card/76 focus-visible:border-primary/55 focus-visible:ring-4 focus-visible:ring-primary/10 disabled:cursor-not-allowed disabled:opacity-60 data-placeholder:text-muted-foreground',
+                              errors.service
+                                ? 'border-warning/45 focus-visible:border-warning/45 focus-visible:ring-warning/10'
+                                : undefined,
+                            )}
+                          >
+                            <span className="truncate">
+                              {selectedService?.title ?? placeholder}
+                            </span>
+                            <ChevronDown className="pointer-events-none absolute right-4 size-4.5 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                          </button>
+                        </DropdownMenuTrigger>
+
+                        <DropdownMenuContent
+                          align="start"
+                          className="max-h-88 w-(--radix-dropdown-menu-trigger-width) min-w-48 bg-card/96"
+                        >
+                          <div className="px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
+                            {placeholder}
+                          </div>
+                          <div className="mx-2 my-1 h-px bg-border/70" />
+                          <DropdownMenuRadioGroup
+                            value={field.value ?? ''}
+                            onValueChange={(value) => {
+                              field.onChange(value)
+                            }}
+                          >
+                            {serviceCards.map((service) => (
+                              <DropdownMenuRadioItem
+                                key={service.id}
+                                value={service.id}
+                                indicatorClassName="left-4"
+                                className="py-3 pl-10 pr-10 text-foreground/92"
+                              >
+                                {service.title}
+                              </DropdownMenuRadioItem>
+                            ))}
+                          </DropdownMenuRadioGroup>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    )
+                  }}
                 />
                 {errors.service ? (
                   <p className="text-sm text-warning">{errors.service.message}</p>

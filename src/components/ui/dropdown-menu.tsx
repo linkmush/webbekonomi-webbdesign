@@ -32,8 +32,10 @@ DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
 
 export const DropdownMenuRadioItem = forwardRef<
   ComponentRef<typeof DropdownMenuPrimitive.RadioItem>,
-  ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
->(({ children, className, ...props }, ref) => (
+  ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem> & {
+    indicatorClassName?: string
+  }
+>(({ children, className, indicatorClassName, ...props }, ref) => (
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
@@ -42,7 +44,7 @@ export const DropdownMenuRadioItem = forwardRef<
     )}
     {...props}
   >
-    <span className="absolute left-3 flex size-4 items-center justify-center text-primary">
+    <span className={cn('absolute left-3 flex size-4 items-center justify-center text-primary', indicatorClassName)}>
       <DropdownMenuPrimitive.ItemIndicator>
         <Check className="size-4" />
       </DropdownMenuPrimitive.ItemIndicator>
