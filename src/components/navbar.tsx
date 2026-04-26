@@ -40,7 +40,7 @@ export function Navbar() {
               className={({ isActive }) =>
                 cn(
                   'rounded-full px-4 py-2 text-sm font-semibold text-muted-foreground transition hover:text-primary',
-                  isActive && 'bg-primary text-primary-foreground shadow-(--shadow-soft)',
+                  isActive && 'bg-primary text-primary-foreground shadow-(--shadow-soft) hover:text-primary-foreground',
                 )
               }
             >

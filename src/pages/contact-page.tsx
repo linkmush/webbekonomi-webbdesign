@@ -160,7 +160,7 @@ export function ContactPage() {
         <div className="mx-auto grid w-full max-w-295 gap-6 px-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
           <div className="surface-panel p-3.5 sm:p-8">
             <div className="mb-8">
-              <p className="break-words text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-xs sm:tracking-[0.34em]">
+              <p className="wrap-break-word text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-xs sm:tracking-[0.34em]">
                 {t('contact.form.eyebrow')}
               </p>
               <h2 className="mt-4 text-[1.7rem] leading-tight min-[390px]:text-[1.9rem] sm:text-3xl">
@@ -284,7 +284,7 @@ export function ContactPage() {
               </div>
 
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto">
+                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto cursor-pointer">
                   {isSubmitting ? t('forms.contact.submitting') : t('forms.contact.submit')}
                 </Button>
               </div>
@@ -310,7 +310,7 @@ export function ContactPage() {
             ))}
 
             <div className="surface-panel grid-surface overflow-hidden p-3.5 sm:p-8">
-              <p className="break-words text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-xs sm:tracking-[0.34em]">
+              <p className="wrap-break-word text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-xs sm:tracking-[0.34em]">
                 {t('contact.map.eyebrow')}
               </p>
               <GoogleMapEmbed
