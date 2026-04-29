@@ -53,6 +53,17 @@
       "primaryCta": "Läs mer om oss",
       "secondaryCta": "Utforska hela erbjudandet"
     },
+    "trustedBy": {
+      "eyebrow": "Trusted by",
+      "title": "Förtroende från företag vi jobbat med.",
+      "description": "Ett lågmält urval av samarbeten där ekonomi, webb och design har fått växa tillsammans.",
+      "ariaLabel": "Företag som Webbekonomi och Webbdesign har jobbat med",
+      "tags": {
+        "finance": "Ekonomi",
+        "web": "Webb",
+        "design": "Design"
+      }
+    },
     "location": {
       "eyebrow": "Kontakt & närvaro",
       "title": "Tydlig kontaktväg, snabb återkoppling och plats för vidare dialog.",

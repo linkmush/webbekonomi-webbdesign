@@ -3,6 +3,7 @@ import { PageMeta } from '@/components/page-meta'
 import { HeroSection } from '@/sections/home/hero-section'
 import { IntroSection } from '@/sections/home/intro-section'
 import { LocationSection } from '@/sections/home/location-section'
+import { TrustedBySection } from '@/sections/home/trusted-by-section'
 
 export function HomePage() {
   const { t } = useTranslation()
@@ -13,6 +14,7 @@ export function HomePage() {
       <HeroSection />
       <IntroSection />
       <LocationSection />
+      <TrustedBySection />
     </>
   )
 }

@@ -53,6 +53,17 @@
       "primaryCta": "Tìm hiểu thêm về chúng tôi",
       "secondaryCta": "Khám phá toàn bộ giải pháp"
     },
+    "trustedBy": {
+      "eyebrow": "Trusted by",
+      "title": "Niềm tin từ các doanh nghiệp chúng tôi từng đồng hành.",
+      "description": "Một lựa chọn tinh gọn về những hợp tác nơi tài chính, web và thiết kế cùng phát triển.",
+      "ariaLabel": "Các doanh nghiệp Webbekonomi và Webbdesign từng hợp tác",
+      "tags": {
+        "finance": "Tài chính",
+        "web": "Web",
+        "design": "Thiết kế"
+      }
+    },
     "location": {
       "eyebrow": "Liên hệ & hiện diện",
       "title": "Kênh liên hệ rõ ràng, phản hồi nhanh và không gian cho đối thoại tiếp theo.",

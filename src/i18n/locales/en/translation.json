@@ -53,6 +53,17 @@
       "primaryCta": "Read more about us",
       "secondaryCta": "Explore the full offer"
     },
+    "trustedBy": {
+      "eyebrow": "Trusted by",
+      "title": "Trusted by companies we have worked with.",
+      "description": "A quiet selection of collaborations where finance, web, and design have grown together.",
+      "ariaLabel": "Companies Webbekonomi and Webbdesign has worked with",
+      "tags": {
+        "finance": "Finance",
+        "web": "Web",
+        "design": "Design"
+      }
+    },
     "location": {
       "eyebrow": "Contact & presence",
       "title": "A clear contact path, quick response, and space for continued dialogue.",
