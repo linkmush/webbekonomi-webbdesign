@@ -17,17 +17,58 @@ import { fadeUp, viewport } from '@/lib/motion'
 
 type ClientLogo = LogoLoopItem & {
   icon?: LucideIcon
+  logoClassName?: string
 }
 
 const clientLogos: ClientLogo[] = [
-  { icon: Landmark, title: 'Nordic Ledger' },
-  { icon: PanelsTopLeft, title: 'Atlas Studio' },
-  { icon: ChartNoAxesColumnIncreasing, title: 'Berg Finans' },
-  { icon: Globe2, title: 'Klara Digital' },
-  { icon: BriefcaseBusiness, title: 'Svea Projekt' },
-  { icon: Layers3, title: 'Forma Retail' },
-  { icon: Building2, title: 'Malar Group' },
-  { icon: BadgeCheck, title: 'Luma Ventures' },
+  {
+    icon: Landmark,
+    logoClassName:
+      "font-['Georgia','Times_New_Roman',serif] font-black uppercase tracking-[0.16em] italic",
+    title: 'Nordic Ledger',
+  },
+  {
+    icon: PanelsTopLeft,
+    logoClassName:
+      "font-['Trebuchet_MS','Segoe_UI',sans-serif] font-extrabold uppercase tracking-[0.26em]",
+    title: 'Atlas Studio',
+  },
+  {
+    icon: ChartNoAxesColumnIncreasing,
+    logoClassName:
+      "font-['Palatino_Linotype','Book_Antiqua',serif] font-semibold tracking-[0.06em] italic",
+    title: 'Berg Finans',
+  },
+  {
+    icon: Globe2,
+    logoClassName:
+      "font-['Verdana','Geneva',sans-serif] font-bold tracking-[-0.03em]",
+    title: 'Klara Digital',
+  },
+  {
+    icon: BriefcaseBusiness,
+    logoClassName:
+      "font-['Arial_Narrow','Arial',sans-serif] font-black uppercase tracking-[0.32em] scale-x-95",
+    title: 'Svea Projekt',
+  },
+  {
+    icon: Layers3,
+    logoClassName:
+      "font-['Gill_Sans','Trebuchet_MS',sans-serif] font-light uppercase tracking-[0.22em]",
+    title: 'Forma Retail',
+  },
+  {
+    icon: Building2,
+    logoClassName:
+      "font-['Courier_New',monospace] font-bold uppercase tracking-[0.08em] scale-y-105",
+    title: 'Malar Group',
+  },
+  {
+    icon: BadgeCheck,
+    logoClassName:
+      "font-['Optima','Segoe_UI',sans-serif] font-semibold tracking-[0.14em]",
+    title: 'Luma Ventures',
+  },
 ]
 
 export function TrustedBySection() {
@@ -88,7 +129,7 @@ export function TrustedBySection() {
                         <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary/90 shadow-[0_0_24px_-14px_color-mix(in_srgb,var(--primary)_95%,transparent)] transition-colors duration-300 group-hover:border-primary/40 group-hover:bg-primary/15 sm:size-9">
                           <Icon className="size-4 sm:size-4.5" strokeWidth={1.8} />
                         </span>
-                        <span className="text-[0.78rem] font-semibold uppercase tracking-[0.18em] sm:text-[0.86rem]">
+                        <span className={`text-[0.78rem] sm:text-[0.86rem] ${item.logoClassName ?? ''}`}>
                           {item.title}
                         </span>
                       </>
